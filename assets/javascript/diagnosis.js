@@ -119,4 +119,25 @@ $(document).ready(function () {
 
   //getBodyLocations();
 
+  readSymptoms();
+
 });
+
+
+function readSymptoms() {
+
+  database.ref('/symptoms').on("value", function (snapshot) {
+    console.log(snapshot.val());
+    var symptoms = snapshot.val();
+
+    Object.keys(symptoms).forEach(function (symptomId) {
+      var symptom = symptoms[symptomId];
+
+      console.log(symptom.name);
+      console.log(symptom.id);
+
+      //Add your list box code here
+      //creatListBoxItem(symptom);
+    })
+  });
+}
