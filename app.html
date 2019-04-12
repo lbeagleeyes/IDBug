@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>IDBug</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="assets/javascript/app.js"></script>
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
+    <div class="input-group flex-nowrap">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping">Symptoms</span>
+      </div>
+      <input type="text" class="form-control" aria-describedby="addon-wrapping" id="symptomList">
+    </div>
+
+    <div class="symptomsSuggestionsContainer"></div>
+    <hr class="my-4">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="genderRadio">Patient's Gender:</label> <br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="male">
+            <label class="form-check-label" for="maleGender">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="female">
+            <label class="form-check-label" for="femaleGender">Female</label>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="inputAge">Patient's Year of Birth</label>
+          <select id="inputYearOfBirth" class="form-control">
+            <option selected>Choose...</option>
+            <option>1980</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <a class="btn btn-primary btn-lg" id="searchBtn" href="#" role="button">Search</a>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card diagnosisCard">
+          <div class="card-header">
+            Diagnosis
+          </div>
+          <table class="table" id="diagnosisTable">
+            <thead>
+              <tr>
+                <th scope="col">Diagnosis</th>
+                <th scope="col">Accuracy</th>
+                <th scope="col">Specialization</th>
+              </tr>
+            </thead>
+            <tbody id="diagnosisList">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="card doctorsCard">
+          <div class="card-header">
+            Doctors
+          </div>
+          <table class="table" id="doctorsTable">
+            <thead>
+              <tr>
+                <th scope="col">Doctor</th>
+                <th scope="col">Specialization</th>
+                <th scope="col">Address</th>
+              </tr>
+            </thead>
+            <tbody id="doctorsList">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+<!-- <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script>
+
+///////////This is for authentication. Haven't gotten it to work yet//////////
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
+    authDomain: "idbug-cb853.firebaseapp.com",
+    databaseURL: "https://idbug-cb853.firebaseio.com",
+    projectId: "idbug-cb853",
+    storageBucket: "idbug-cb853.appspot.com",
+    messagingSenderId: "345341406873"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    // ...
+  } else {
+    window.location.replace('index.html');
+  }
+});</script> -->
+
+</body>
+
+</html>
