@@ -11,6 +11,10 @@
     display: none;
 }
 
+#location-status {
+    display: none;
+}
+
 .specializationBtn {
     display: block;
     margin-bottom: 2%;

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
-
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
   <script src="assets/javascript/hmac-md5.js"></script>                        
   <script src="assets/javascript/enc-base64-min.js"></script>
@@ -18,8 +18,9 @@
   
   <script src="assets/javascript/diagnosis.js"></script>
     <script src="assets/javascript/app.js"></script>
+   <script src="assets/javascript/retrieve_doctors.js"></script>
   <script src="assets/javascript/loggedin.js"></script>
- 
+
 </head>
 
 <body>
@@ -101,27 +102,45 @@
 
 
       <div class="col-md-6">
-        <div class="card doctorsCard">
+        <div class="card" id="location-status">
           <div class="card-header">
-            Doctors
+            Sharing location Status
           </div>
-          <table class="table" id="doctorsTable">
-            <thead>
-              <tr>
-                <th scope="col">Doctor</th>
-                <th scope="col">Specialization</th>
-                <th scope="col">Address</th>
-              </tr>
-            </thead>
-            <tbody id="doctorsList">
-            </tbody>
-          </table>
+          <div class="card-body">
+            
+            <p id="status"></p>
+            <a id="map-link" target="_blank"></a>
+
+          </div>
         </div>
       </div>
     </div>
 
+
+
+    </br>
+    <div class="col-md-6 offset-md-6">
+
+      <div class="card doctorsCard">
+        <div class="card-header">
+          Doctors
+        </div>
+        <table class="table" id="doctorsTable">
+          <thead>
+            <tr>
+              <th scope="col">Medical Facility</th>
+              <th scope="col">Distance (miles)</th>
+              <th scope="col">Address</th>
+            </tr>
+          </thead>
+          <tbody id="doctorsList">
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
+  </div>
 </body>
 
 </html>

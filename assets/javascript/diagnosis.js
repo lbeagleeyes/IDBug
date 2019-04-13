@@ -87,6 +87,7 @@ function showDiagnosis(response) {
         click: function () {
           //CALL find doctors method - sewon
           //getDoctors(specializationName);
+          geoFindMe(specializationName);
         }
       });
       btnGroup.append(specializationBtn);
@@ -179,7 +180,9 @@ $(document).ready(function () {
 
   //getBodyLocations();
 
-  //readSymptoms();
+
+ // readSymptoms();
+
 
 });
 
