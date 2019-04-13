@@ -53,6 +53,14 @@ function getDiagnosis(symptomIdList, gender, birthYear) {
 
 function showDiagnosis(response) {
   console.log(response);
+
+  if (response.length < 1) {
+
+    $(".diagnosisCard").append($('<h3>').text("No diagnosis found. Please enter more symptoms and try again."));
+    return;
+
+  }
+
   $(".diagnosisCard").show();
   for (var i = 0; i < response.length; i++) {
     var issue = response[i].Issue;
@@ -63,18 +71,14 @@ function showDiagnosis(response) {
 
     row.append($('<td>').text(issue.ProfName));
     row.append($('<td>').text(Math.round(+issue.Accuracy) + "%"));
-
     var specilizationCol = new $('<td>');
-    
 
     var btnGroup = new $('<div>', {
       class: 'btn-group-vertical'
-  });
+    });
 
-    
     const specialisations = response[i].Specialisation;
     for (var j = 0; j < specialisations.length; j++) {
-
       const specialisationName = specialisations[j].Name;
       var specializationBtn = new $('<button>', {
         class: "btn btn-light specializationBtn",
@@ -84,18 +88,14 @@ function showDiagnosis(response) {
           //CALL find doctors method - sewon
         }
       });
-
       btnGroup.append(specializationBtn);
-
     }
 
     specilizationCol.append(btnGroup);
     row.append(specilizationCol);
 
     $("#diagnosisList").append(row);
-
   }
-
 }
 
 function getSymptomsList() {
