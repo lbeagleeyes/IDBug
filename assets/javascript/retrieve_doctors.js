@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 //get user's geolocation
 var location = { latitude: "", longitude: "" };
 function geoFindMe(practice) {
