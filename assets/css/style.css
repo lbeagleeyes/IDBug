@@ -7,3 +7,7 @@
 .diagnosisCard {
     display: none;
 }
+
+#location-status {
+    display: none;
+}

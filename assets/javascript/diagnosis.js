@@ -119,7 +119,7 @@ $(document).ready(function () {
 
   //getBodyLocations();
 
-  readSymptoms();
+ // readSymptoms();
 
 });
 

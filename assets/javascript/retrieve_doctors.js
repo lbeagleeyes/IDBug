@@ -1,19 +1,20 @@
 
-//get user's geolocation
-var location = { latitude: "", longitude: "" };
+//get user's geousrLctn
+var usrLctn = { latitude: "", longitude: "" };
 function geoFindMe(practice) {
   const status = document.querySelector('#status');
   const mapLink = document.querySelector('#map-link');
   mapLink.href = '';
   mapLink.textContent = '';
+
   function success(position) {
-    location.latitude = position.coords.latitude;
-    location.longitude = position.coords.longitude;
-    console.log(location.latitude);
-    console.log(location.longitude);
+    usrLctn.latitude = position.coords.latitude;
+    usrLctn.longitude = position.coords.longitude;
+    console.log(usrLctn.latitude);
+    console.log(usrLctn.longitude);
     status.textContent = '';
     // mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-    // mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+    mapLink.textContent = `Latitude: ${usrLctn.latitude} °, Longitude: ${usrLctn.longitude} °`;
     localStorage.setItem("latitude", position.coords.latitude);
     localStorage.setItem("longitude", position.coords.longitude)
 
@@ -24,10 +25,11 @@ function geoFindMe(practice) {
 
   }
   function error() {
-    status.textContent = 'Unable to retrieve your location';
+    $("$location-status").show
+    status.textContent = 'Unable to retrieve your usrLctn';
   }
   if (!navigator.geolocation) {
-    status.textContent = 'Geolocation is not supported by your browser';
+    status.textContent = 'geolocation is not supported by your browser';
   } else {
     status.textContent = 'Locating…';
     navigator.geolocation.getCurrentPosition(success, error);
@@ -52,8 +54,8 @@ var getDoctor = function (practice) {
   var limit = 10
   var distance = 10
   var queryURL = "https://api.betterdoctor.com/2016-03-01/practices?name=" + practice +
-    "&location=" + userlat + "%2C" + userlon + "%2C" + + distance +
-    "&user_location=" + userlat + "%2C" + userlon +
+    "&location=" + usrLctn.latitude + "%2C" + usrLctn.longitude + "%2C" + + distance +
+    "&user_location=" + usrLctn.latitude + "%2C" + usrLctn.longitude +
     "&skip=0&limit=" + limit +
     "&user_key=7e08d09b7f6c0a16e0d23968b6669bd7"
 
@@ -85,17 +87,18 @@ var getDoctor = function (practice) {
           $("<td>").text(distance),
           $("<td>").text(address)
         );
-        $("#doctorsList").append(newRow)
+        $("#doctorsList").append(newRow);
       }
 
     });
+
 }
 
 
 $(document).ready(function () {
   geoFindMe("dermatology");
-
-  //document.querySelector('#user_location').addEventListener('click', geoFindMe);
+  
+  //document.querySelector('#user_location').addEventListener('click', geoFindMe("dermatology"));
 
 
 });
