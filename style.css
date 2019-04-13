@@ -1,10 +1,13 @@
 #header {
 text-align: center;
-font-size: 48px;
+font-size: 64px;
+font-family: 'Khand', sans-serif;
+
 }
 
 #header2{
 font-size: 16px;
+font-family: 'Pragati Narrow', sans-serif;
 
 }
 
@@ -23,3 +26,7 @@ margin: 0 auto;
   text-align: center;
 }
 
+#inputYearOfBirth {
+margin-top: 20px;
+
+}
