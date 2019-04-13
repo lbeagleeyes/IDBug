@@ -95,10 +95,10 @@ var getDoctor = function (practice) {
 }
 
 
-$(document).ready(function () {
-  geoFindMe("dermatology");
+//$(document).ready(function () {
+  //geoFindMe("dermatology");
   
   //document.querySelector('#user_location').addEventListener('click', geoFindMe("dermatology"));
 
 
-});
+//});
