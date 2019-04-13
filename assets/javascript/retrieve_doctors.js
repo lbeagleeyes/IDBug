@@ -38,18 +38,6 @@ function geoFindMe(practice) {
 }
 
 
-
-
-
-//console.log(geoFindMe);
-
-
-//Better doctor API
-
-
-
-
-
 var getDoctor = function (practice) {
   var limit = 10
   var distance = 10
