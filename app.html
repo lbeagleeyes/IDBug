@@ -98,7 +98,7 @@
 
   
 
-<!-- <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 <script>
 
 ///////////This is for authentication. Haven't gotten it to work yet//////////
@@ -119,18 +119,19 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
+    // var displayName = user.displayName;
+    // var email = user.email;
+    // var emailVerified = user.emailVerified;
+    // var photoURL = user.photoURL;
+    // var isAnonymous = user.isAnonymous;
+    // var uid = user.uid;
+    // var providerData = user.providerData;
+    console.log(user);
     // ...
   } else {
     window.location.replace('index.html');
   }
-});</script> -->
+});</script>
 
 </body>
 
