@@ -1,3 +1,21 @@
+
 #signin ,#logout{
   margin: 10px;
+}
+
+.doctorsCard  {
+    display: none;
+}
+
+.diagnosisCard {
+    display: none;
+}
+
+.specializationBtn {
+    display: block;
+    margin-bottom: 2%;
+}
+
+.symptomSearch {
+    margin-bottom: 1%;
 }

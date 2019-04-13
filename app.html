@@ -6,18 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>IDBug</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 
-  <script src="assets/javascript/app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+  <script src="assets/javascript/hmac-md5.js"></script>                        
+  <script src="assets/javascript/enc-base64-min.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  
+  <script src="assets/javascript/diagnosis.js"></script>
+    <script src="assets/javascript/app.js"></script>
   <script src="assets/javascript/loggedin.js"></script>
-
+ 
 </head>
 
 <body>
+
 
     <nav>
         <ul class="nav justify-content-end">
@@ -29,14 +35,22 @@
 
   <div class="jumbotron">
     <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
-    <div class="input-group flex-nowrap">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping">Symptoms</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="addon-wrapping" id="symptomList">
-    </div>
 
-    <div class="symptomsSuggestionsContainer"></div>
+    <div class="symptomsContainer">
+      <div class="row">
+        <div class="col-md-3">
+          <input type="text" class="form-control symptomSearch" id="symptomSearch1" onkeyup="searchForSymptoms()" placeholder="Search..." aria-label="Symptoms" aria-describedby="Symptoms-list">
+          <ul id="symptoms">
+            
+          </ul>
+          
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-light plusBtn">+</button>
+        </div>
+      </div>
+              
+    </div>
     <hr class="my-4">
     <form>
       <div class="form-row">
@@ -107,11 +121,6 @@
     </div>
 
   </div>
-
-  
-
-
-
 
 </body>
 
