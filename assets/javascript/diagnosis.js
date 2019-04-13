@@ -86,6 +86,7 @@ function showDiagnosis(response) {
         text: specialisationName,
         click: function () {
           //CALL find doctors method - sewon
+          //getDoctors(specializationName);
         }
       });
       btnGroup.append(specializationBtn);
