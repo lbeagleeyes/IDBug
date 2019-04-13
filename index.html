@@ -1,14 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project-1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
-    <script src="assets/javascript/app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>IDBug Sign In</title>
 </head>
+
 <body>
-    
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
+            authDomain: "idbug-cb853.firebaseapp.com",
+            databaseURL: "https://idbug-cb853.firebaseio.com",
+            projectId: "idbug-cb853",
+            storageBucket: "idbug-cb853.appspot.com",
+            messagingSenderId: "345341406873"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <div class="text-center">
+        <img src="assets/images/idbug.png">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-4">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <!-- <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Agree to terms of service</label>
+                    </div> -->
+
+                    <div id="sign-up">
+                        Don't have an account?
+                        <button type="button" id="signup" class="btn btn-link">Sign Up</button>
+                    </div>
+                    <div id="button">
+                        <button type="submit" id="login" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
+
+        </div>
+    </div>
+
+    <script>
+
+
+
+        $("#signup").on("click", function () {
+            $("#sign-up").hide();
+            $("#button").children().hide();
+            var signup = $("<button>");
+            signup.addClass("btn btn-primary");
+            signup.attr("id", "signupbtn");
+            signup.attr("type", "submit");
+            signup.append("Sign Up");
+            $("#button").append(signup);
+        })
+
+        // When Sign Up button is clicked, pass email and password
+
+        $(document).on("click", "#signupbtn", createNewuser);
+        // $("#signupbtn").on("click", function () {
+
+        function createNewuser() {
+            event.preventDefault();
+            var email = $("#email").val().trim();
+            var password = $("#password").val().trim();
+
+            console.log(email);
+            console.log(password);
+
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
+        }
+
+        $(document).on("click", "#login", signinUser);
+
+        function signinUser() {
+
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
+        }
+
+            // })
+
+
+
+    </script>
 </body>
+
 </html>
