@@ -24,14 +24,22 @@
 
   <div class="jumbotron">
     <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
-    <div class="input-group flex-nowrap">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping">Symptoms</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="addon-wrapping" id="symptomList">
-    </div>
 
-    <div class="symptomsSuggestionsContainer"></div>
+    <div class="symptomsContainer">
+      <div class="row">
+        <div class="col-md-3">
+          <input type="text" class="form-control symptomSearch" id="symptomSearch1" onkeyup="searchForSymptoms()" placeholder="Search..." aria-label="Symptoms" aria-describedby="Symptoms-list">
+          <ul id="symptoms">
+            
+          </ul>
+          
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-light plusBtn">+</button>
+        </div>
+      </div>
+              
+    </div>
     <hr class="my-4">
     <form>
       <div class="form-row">
