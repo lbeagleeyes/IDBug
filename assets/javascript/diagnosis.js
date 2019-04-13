@@ -46,7 +46,7 @@ function getApiData(queryURL, callBack) {
   });
 }
 
-function getDiagnosis(symptomIdList, gender, birthYear) {
+function getDiagnosis(symptomIdList, gender, birthYear){
   var queryURL = apiURL + '/diagnosis?symptoms=' + JSON.stringify(symptomIdList) + '&gender=' + gender + '&year_of_birth=' + birthYear;
   getApiData(queryURL, showDiagnosis);
 }
@@ -87,6 +87,8 @@ function showDiagnosis(response) {
         click: function () {
           //CALL find doctors method - sewon
           //getDoctors(specializationName);
+
+          geoFindMe(specialisationName);
         }
       });
       btnGroup.append(specializationBtn);
@@ -167,26 +169,43 @@ function writeToDB(tableName, name, id) {
 
 $(document).ready(function () {
 
-  var test1 = [73, 9, 15];
+  // var test1 = [73, 9, 15];
 
-  //getSpecializations(test2, "female", 1980);
-
-  getDiagnosis(test1, "female", 1980);
-
-  // getSymptomsList();
-
-  //writeToDBTest();
-
-  //getBodyLocations();
+  // getDiagnosis(test1, "female", 1980);
 
   //readSymptoms();
 
+  fillSymptoms("#symptoms1");
+
 });
+
+function fillSymptoms(ulId) {
+
+  database.ref('/symptoms/').on("value", function (snapshot) {
+    console.log(snapshot.val());
+    var symptoms = snapshot.val();
+
+    Object.keys(symptoms).forEach(function (symptomId) {
+      var symptom = symptoms[symptomId];
+
+      console.log(symptom.name);
+      console.log(symptom.id);
+
+      var symptomLi = new $('<li>', {
+        id:symptom.ID,
+        text: symptom.Name
+      });
+      $(ulId).append(symptomLi);
+    })
+  });
+
+
+}
 
 
 function readSymptoms() {
 
-  database.ref('/symptoms').on("value", function (snapshot) {
+  database.ref('/symptoms/').on("value", function (snapshot) {
     console.log(snapshot.val());
     var symptoms = snapshot.val();
 
