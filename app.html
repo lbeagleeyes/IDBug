@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>IDBug</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <script src="assets/javascript/hmac-md5.js"></script>                        
+  <script src="assets/javascript/enc-base64-min.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script src="assets/javascript/diagnosis.js"></script>
+ 
+</head>
+
+<body>
+<div class='Main'>
+  <div class="jumbotron">
+    <h1 class="display-4" id='header'>IDBug</h1>
+    <h2 class='display-5' id='header2'>Enter your symptoms to get help</h2>
+
+    <div class="symptomsContainer">
+      <div class="row">
+       
+          <input type="text" class="form-control symptomSearch" id="symptomSearch1" onkeyup="searchForSymptoms()" placeholder="Search..." aria-label="Symptoms" aria-describedby="Symptoms-list">
+          <button type="button" id='addbutton'class="btn btn-light plusBtn">+</button>
+
+          <ul id="symptoms">
+
+            
+          </ul>
+          
+        </div>  
+    </div>
+    <hr class="my-4">
+      <div class="form-row" id='patientInfo'>
+          <form>
+          <label for="genderRadio">Patient's Gender:</label> <br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="male">
+            <label class="form-check-label" for="maleGender">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="female">
+            <label class="form-check-label" for="femaleGender">Female</label>
+          </div>
+       
+
+        
+          <label for="inputAge">Patient's Year of Birth</label>
+          <select id="inputYearOfBirth" class="form-control">
+            <option selected>Choose...</option>
+            <option>1980</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    </form>
+    <a class="btn btn-primary btn-lg" id="searchBtn" href="#" role="button">Search</a>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card diagnosisCard">
+          <div class="card-header">
+            Diagnosis
+          </div>
+          <table class="table" id="diagnosisTable">
+            <thead>
+              <tr>
+                <th scope="col">Diagnosis</th>
+                <th scope="col">Accuracy</th>
+                <th scope="col">Specialization</th>
+              </tr>
+            </thead>
+            <tbody id="diagnosisList">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="card doctorsCard">
+          <div class="card-header">
+            Doctors
+          </div>
+          <table class="table" id="doctorsTable">
+            <thead>
+              <tr>
+                <th scope="col">Doctor</th>
+                <th scope="col">Specialization</th>
+                <th scope="col">Address</th>
+              </tr>
+            </thead>
+            <tbody id="doctorsList">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+
+</html>
