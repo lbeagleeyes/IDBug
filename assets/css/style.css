@@ -1,4 +1,7 @@
 
+#signin ,#logout{
+  margin: 10px;
+}
 
 .doctorsCard  {
     display: none;
