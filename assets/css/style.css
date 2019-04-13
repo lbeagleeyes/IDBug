@@ -7,3 +7,12 @@
 .diagnosisCard {
     display: none;
 }
+
+.specializationBtn {
+    display: block;
+    margin-bottom: 2%;
+}
+
+.symptomSearch {
+    margin-bottom: 1%;
+}

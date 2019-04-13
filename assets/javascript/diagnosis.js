@@ -11,10 +11,18 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
+//var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
+
+var apiURL = "https://sandbox-healthservice.priaid.ch"; //sandbox
+//var apiURL = "https://healthservice.priaid.ch";       //live data
+
 function getApiData(queryURL, callBack) {
-  var api_key = "Qx6s7_GMAIL_COM_AUT";
-  var uri = "https://authservice.priaid.ch/login";
-  var secret_key = "Nm7o6S3Lqt9AJb84X";
+  var api_key = "laurabermudezg@gmail.com"  //sandbox
+  //var api_key = "Qx6s7_GMAIL_COM_AUT";    //live
+  var uri = apiLoginURL;
+  var secret_key = "p2C3QtAr84HdZn9q6";     //sandbox
+  //var secret_key = "Nm7o6S3Lqt9AJb84X";   //live
   var computedHash = CryptoJS.HmacMD5(uri, secret_key);
   var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
 
@@ -39,12 +47,60 @@ function getApiData(queryURL, callBack) {
 }
 
 function getDiagnosis(symptomIdList, gender, birthYear) {
-  var queryURL = 'https://healthservice.priaid.ch/diagnosis?symptoms=' + JSON.stringify(symptomIdList) + 'gender=' + gender + 'year_of_birth=' + birthYear;
+  var queryURL = apiURL + '/diagnosis?symptoms=' + JSON.stringify(symptomIdList) + '&gender=' + gender + '&year_of_birth=' + birthYear;
   getApiData(queryURL, showDiagnosis);
 }
 
+function showDiagnosis(response) {
+  console.log(response);
+
+  if (response.length < 1) {
+
+    $(".diagnosisCard").append($('<h3>').text("No diagnosis found. Please enter more symptoms and try again."));
+    return;
+
+  }
+
+  $(".diagnosisCard").show();
+  for (var i = 0; i < response.length; i++) {
+    var issue = response[i].Issue;
+
+    var row = new $('<tr>', {
+      id: issue.ID
+    });
+
+    row.append($('<td>').text(issue.ProfName));
+    row.append($('<td>').text(Math.round(+issue.Accuracy) + "%"));
+    var specilizationCol = new $('<td>');
+
+    var btnGroup = new $('<div>', {
+      class: 'btn-group-vertical'
+    });
+
+    const specialisations = response[i].Specialisation;
+    for (var j = 0; j < specialisations.length; j++) {
+      const specialisationName = specialisations[j].Name;
+      var specializationBtn = new $('<button>', {
+        class: "btn btn-light specializationBtn",
+        'data-specialisation': specialisationName,
+        text: specialisationName,
+        click: function () {
+          //CALL find doctors method - sewon
+          //getDoctors(specializationName);
+        }
+      });
+      btnGroup.append(specializationBtn);
+    }
+
+    specilizationCol.append(btnGroup);
+    row.append(specilizationCol);
+
+    $("#diagnosisList").append(row);
+  }
+}
+
 function getSymptomsList() {
-  var queryURL = "https://healthservice.priaid.ch/symptoms?language=en-gb";
+  var queryURL = apiURL + "/symptoms?language=en-gb";
   getApiData(queryURL, saveSymptomList);
 }
 
@@ -58,7 +114,7 @@ function saveSymptomList(response) {
 }
 
 function getBodyLocations() {
-  var queryURL = "https://healthservice.priaid.ch/body/locations";
+  var queryURL = apiURL + "/body/locations";
   getApiData(queryURL, setBodyLocations);
 }
 
@@ -72,7 +128,7 @@ function setBodyLocations(response) {
 }
 
 function getProposedSymptoms() {
-  var queryURL = 'https://healthservice.priaid.ch/diagnosis?&symptoms=' + JSON.stringify(symptomIdList) + '&gender=' + gender + '&year_of_birth=' + birthYear;
+  var queryURL = apiURL + '/diagnosis?&symptoms=' + JSON.stringify(symptomIdList) + '&gender=' + gender + '&year_of_birth=' + birthYear;
   getApiData(queryURL, showProposedSymptoms);
 }
 
@@ -86,11 +142,13 @@ function showProposedSymptoms(response) {
 
 function getSpecializations(symptomsList, gender, birthYear) {
 
-  var queryURL = "https://healthservice.priaid.ch/diagnosis/specialisations?&symptoms=" + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
+  var queryURL = apiURL + "/diagnosis/specialisations?&symptoms=" + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
   getApiData(queryURL, showSpecializations);
 }
 
 function showSpecializations(response) {
+
+  console.log(response);
   for (var i = 0; i < response.length; i++) {
     console.log(response.ID);
     console.log(response.Name);
@@ -109,9 +167,11 @@ function writeToDB(tableName, name, id) {
 
 $(document).ready(function () {
 
-  // var test = [234, 235, 236];
+  var test1 = [73, 9, 15];
 
-  // getDiagnosis(test, "female", 1980);
+  //getSpecializations(test2, "female", 1980);
+
+  getDiagnosis(test1, "female", 1980);
 
   // getSymptomsList();
 
@@ -119,7 +179,7 @@ $(document).ready(function () {
 
   //getBodyLocations();
 
-  readSymptoms();
+  //readSymptoms();
 
 });
 
