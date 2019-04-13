@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+// Initialize Firebase
 var config = {
   apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
   authDomain: "idbug-cb853.firebaseapp.com",
@@ -107,65 +107,37 @@ function writeToDB(tableName, name, id) {
 
 }
 
-function getResults () {
-  for (var i = 0; i < response.length; i++) {
-    
-    
-    //append response data from API
-  
-  }
+$(document).ready(function () {
+
+  // var test = [234, 235, 236];
+
+  // getDiagnosis(test, "female", 1980);
+
+  // getSymptomsList();
+
+  //writeToDBTest();
+
+  //getBodyLocations();
+
+  readSymptoms();
+
+});
 
 
-
-$('#Search').on('click', function(event) {
-  showProposedSymptoms();
-  $('#symptombutton').html(showProposedSymptoms);
-  $('#symptombutton').text(showProposedSymptoms);
-  $('#symptombutton').append(showProposedSymptoms);
-
-$('#symptombutton').on('keydown', function(e){
-  
 function readSymptoms() {
-    database.ref('/symptoms').on("value", function (snapshot) {
-      console.log(snapshot.val());
-      var symptoms = snapshot.val();
-      Object.keys(symptoms).forEach(function (symptomId) {
-        var symptom = symptoms[symptomId];
-        console.log(symptom.name);
-        console.log(symptom.id);
-        //Add your list box code here
-        //creatListBoxItem(symptom);
-      })
-    });
-  }
-  //if enter is pressed then display showedpropsedsymptoms
-  //we need ID's 
-  //searchfield inputs (lists that we have)
-  //adding components 
-  // once 
-  //make list for dropdown
- 
-})
 
+  database.ref('/symptoms').on("value", function (snapshot) {
+    console.log(snapshot.val());
+    var symptoms = snapshot.val();
 
+    Object.keys(symptoms).forEach(function (symptomId) {
+      var symptom = symptoms[symptomId];
 
-})}
+      console.log(symptom.name);
+      console.log(symptom.id);
 
-// 
-=======
-//global variables
-var destination;
-var origin;
-var travelmode;
-
-//direction query URL that takes the user to Google Maps with origin and destination already plugged into the search. Also includes travelmode (ie. walking, driving, bicycle)
-var directionQuery = "https://www.google.com/maps/dir/?api=1&origin=" + replaceSpace(origin) + "&destination=" + replaceSpace(destination) + "&travelmode=" + travelmode;
-
-//function to replace space with + for the url
-function replaceSpace(location){
-    return location.split(' ').join('+');
+      //Add your list box code here
+      //creatListBoxItem(symptom);
+    })
+  });
 }
-
-
-
->>>>>>> 324226f069d993149d2878b698109d76c8ca6298

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .navbar {
 width: 100%;  
 text-align:center;
@@ -7,5 +8,20 @@ text-align:center;
 .form-control {
 width: 75%;
 font-size: 30px;
+
+=======
+
+
+.doctorsCard  {
+    display: none;
+}
+
+.diagnosisCard {
+    display: none;
+>>>>>>> 324226f069d993149d2878b698109d76c8ca6298
+}
+
+.header {
+text-align: center;
 
 }
