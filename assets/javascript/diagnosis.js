@@ -46,7 +46,7 @@ function getApiData(queryURL, callBack) {
   });
 }
 
-function getDiagnosis(symptomIdList, gender, birthYear){
+function getDiagnosis(symptomIdList, gender, birthYear) {
   var queryURL = apiURL + '/diagnosis?symptoms=' + JSON.stringify(symptomIdList) + '&gender=' + gender + '&year_of_birth=' + birthYear;
   getApiData(queryURL, showDiagnosis);
 }
@@ -175,11 +175,11 @@ $(document).ready(function () {
 
   //readSymptoms();
 
-  fillSymptoms("#symptoms1");
+  fillSymptoms("#symptomsSelect");
 
 });
 
-function fillSymptoms(ulId) {
+function fillSymptoms(selectId) {
 
   database.ref('/symptoms/').on("value", function (snapshot) {
     console.log(snapshot.val());
@@ -187,15 +187,11 @@ function fillSymptoms(ulId) {
 
     Object.keys(symptoms).forEach(function (symptomId) {
       var symptom = symptoms[symptomId];
-
-      console.log(symptom.name);
-      console.log(symptom.id);
-
-      var symptomLi = new $('<li>', {
-        id:symptom.ID,
+      var symptomOption = new $('<option>', {
+        value: symptom.ID,
         text: symptom.Name
       });
-      $(ulId).append(symptomLi);
+      $(selectId).append(symptomOption);
     })
   });
 
