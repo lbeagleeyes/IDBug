@@ -10,10 +10,22 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+
   <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/loggedin.js"></script>
+
 </head>
 
 <body>
+
+    <nav>
+        <ul class="nav justify-content-end">
+            <button type="button" id="logout" class="btn btn-primary">
+                Log Out
+            </button>
+        </ul>
+    </nav>
 
   <div class="jumbotron">
     <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
@@ -98,40 +110,8 @@
 
   
 
-<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
-<script>
 
-///////////This is for authentication. Haven't gotten it to work yet//////////
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
-    authDomain: "idbug-cb853.firebaseapp.com",
-    databaseURL: "https://idbug-cb853.firebaseio.com",
-    projectId: "idbug-cb853",
-    storageBucket: "idbug-cb853.appspot.com",
-    messagingSenderId: "345341406873"
-  };
-  firebase.initializeApp(config);
-</script>
-
-<script>
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    // var displayName = user.displayName;
-    // var email = user.email;
-    // var emailVerified = user.emailVerified;
-    // var photoURL = user.photoURL;
-    // var isAnonymous = user.isAnonymous;
-    // var uid = user.uid;
-    // var providerData = user.providerData;
-    console.log(user);
-    // ...
-  } else {
-    window.location.replace('index.html');
-  }
-});</script>
 
 </body>
 

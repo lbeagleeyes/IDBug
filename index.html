@@ -97,9 +97,18 @@
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
                     </div>
+                    <!-- <div class="form-group">
+                        <label for="exampleInputName">Name</label>
+                        <input type="name" class="form-control" id="name" aria-describedby="emailHelp"
+                            placeholder="Enter Your Name">
+                    </div> -->
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="signuppassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmpassword" placeholder="Password">
                     </div>
                     <div id="sign-up">
                         Aleady have an account?
@@ -115,6 +124,27 @@
             </div>
         </div>
     </div>
+
+
+<!-- Log in Error Modal -->
+    <div class="modal" id="loginerror" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Login Error</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Incorrect password or confirmation code entered. Please try again.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <div class="text-center">
         <img src="assets/images/idbug.png">
