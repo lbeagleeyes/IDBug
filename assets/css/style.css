@@ -18,10 +18,22 @@ font-size: 30px;
 
 .diagnosisCard {
     display: none;
+<<<<<<< HEAD
 >>>>>>> 324226f069d993149d2878b698109d76c8ca6298
 }
 
 .header {
 text-align: center;
 
+=======
+}
+
+.specializationBtn {
+    display: block;
+    margin-bottom: 2%;
+}
+
+.symptomSearch {
+    margin-bottom: 1%;
+>>>>>>> 95c63a41bf7ee9ace67df945a6fcd2f301c0ffab
 }
