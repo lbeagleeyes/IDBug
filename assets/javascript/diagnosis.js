@@ -9,7 +9,7 @@
 // };
 // firebase.initializeApp(config);
 
-// var database = firebase.database();
+ var database = firebase.database();
 
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
@@ -168,28 +168,45 @@ function writeToDB(tableName, name, id) {
 
 $(document).ready(function () {
 
-  var test1 = [73, 9, 15];
+  // var test1 = [73, 9, 15];
 
-  //getSpecializations(test2, "female", 1980);
+  // getDiagnosis(test1, "female", 1980);
 
-  getDiagnosis(test1, "female", 1980);
+  //readSymptoms();
 
-  // getSymptomsList();
-
-  //writeToDBTest();
-
-  //getBodyLocations();
-
-
- // readSymptoms();
-
+  fillSymptoms("#symptomsSelect");
 
 });
+
+function fillSymptoms(selectId) {
+
+  database.ref('/symptoms/').on("value", function (snapshot) {
+    console.log(snapshot.val());
+    var symptoms = snapshot.val();
+
+    Object.keys(symptoms).forEach(function (symptomId) {
+      var symptom = symptoms[symptomId];
+
+      // console.log(symptom.id);
+      // console.log(symptom.name);
+      
+      var symptomOption = new $('<option>', {
+        value: symptom.id,
+        text: symptom.name
+      });
+      $(selectId).append(symptomOption);
+    })
+    //update html
+    $('.selectpicker').selectpicker('refresh');
+  });
+
+
+}
 
 
 function readSymptoms() {
 
-  database.ref('/symptoms').on("value", function (snapshot) {
+  database.ref('/symptoms/').on("value", function (snapshot) {
     console.log(snapshot.val());
     var symptoms = snapshot.val();
 
