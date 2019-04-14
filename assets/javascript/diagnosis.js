@@ -1,15 +1,15 @@
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
-  authDomain: "idbug-cb853.firebaseapp.com",
-  databaseURL: "https://idbug-cb853.firebaseio.com",
-  projectId: "idbug-cb853",
-  storageBucket: "idbug-cb853.appspot.com",
-  messagingSenderId: "345341406873"
-};
-firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
+//   authDomain: "idbug-cb853.firebaseapp.com",
+//   databaseURL: "https://idbug-cb853.firebaseio.com",
+//   projectId: "idbug-cb853",
+//   storageBucket: "idbug-cb853.appspot.com",
+//   messagingSenderId: "345341406873"
+// };
+// firebase.initializeApp(config);
 
-var database = firebase.database();
+ var database = firebase.database();
 
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
@@ -87,6 +87,7 @@ function showDiagnosis(response) {
         click: function () {
           //CALL find doctors method - sewon
           //getDoctors(specializationName);
+          geoFindMe(specialisationName);
         }
       });
       btnGroup.append(specializationBtn);
@@ -167,26 +168,45 @@ function writeToDB(tableName, name, id) {
 
 $(document).ready(function () {
 
-  var test1 = [73, 9, 15];
+  // var test1 = [73, 9, 15];
 
-  //getSpecializations(test2, "female", 1980);
-
-  getDiagnosis(test1, "female", 1980);
-
-  // getSymptomsList();
-
-  //writeToDBTest();
-
-  //getBodyLocations();
+  // getDiagnosis(test1, "female", 1980);
 
   //readSymptoms();
 
+  fillSymptoms("#symptomsSelect");
+
 });
+
+function fillSymptoms(selectId) {
+
+  database.ref('/symptoms/').on("value", function (snapshot) {
+    console.log(snapshot.val());
+    var symptoms = snapshot.val();
+
+    Object.keys(symptoms).forEach(function (symptomId) {
+      var symptom = symptoms[symptomId];
+
+      // console.log(symptom.id);
+      // console.log(symptom.name);
+      
+      var symptomOption = new $('<option>', {
+        value: symptom.id,
+        text: symptom.name
+      });
+      $(selectId).append(symptomOption);
+    })
+    //update html
+    $('.selectpicker').selectpicker('refresh');
+  });
+
+
+}
 
 
 function readSymptoms() {
 
-  database.ref('/symptoms').on("value", function (snapshot) {
+  database.ref('/symptoms/').on("value", function (snapshot) {
     console.log(snapshot.val());
     var symptoms = snapshot.val();
 
