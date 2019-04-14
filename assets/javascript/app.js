@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 var config = {
   apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
   authDomain: "idbug-cb853.firebaseapp.com",
@@ -152,7 +152,7 @@ function readSymptoms() {
 })}
 
 // 
-=======
+
 //global variables
 var destination;
 var origin;
@@ -168,4 +168,4 @@ function replaceSpace(location){
 
 
 
->>>>>>> 324226f069d993149d2878b698109d76c8ca6298
+
