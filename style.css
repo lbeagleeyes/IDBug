@@ -11,7 +11,7 @@ font-family: 'Pragati Narrow', sans-serif;
 
 }
 
-.row {
+.searchBar {
 width: 33%;
 margin: 0 auto;
 }
@@ -29,4 +29,8 @@ margin: 0 auto;
 #inputYearOfBirth {
 margin-top: 20px;
 
+}
+
+#searchBtn {
+  margin-top: 16px; 
 }
