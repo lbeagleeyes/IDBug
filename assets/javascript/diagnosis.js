@@ -9,7 +9,7 @@
 // };
 // firebase.initializeApp(config);
 
-// var database = firebase.database();
+ var database = firebase.database();
 
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
