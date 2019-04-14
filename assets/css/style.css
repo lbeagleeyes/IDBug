@@ -1,0 +1,53 @@
+<<<<<<< HEAD
+.navbar {
+width: 100%;  
+text-align:center;
+
+}
+
+.form-control {
+width: 75%;
+font-size: 30px;
+
+=======
+
+#signin ,#logout{
+  margin: 10px;
+}
+
+.doctorsCard  {
+    display: none;
+}
+
+.diagnosisCard {
+    display: none;
+<<<<<<< HEAD
+>>>>>>> 324226f069d993149d2878b698109d76c8ca6298
+}
+
+.header {
+text-align: center;
+
+=======
+}
+
+#location-status {
+    display: none;
+}
+
+.specializationBtn {
+    display: block;
+    margin-bottom: 2%;
+}
+
+<<<<<<< HEAD
+.symptomSearch {
+    margin-bottom: 1%;
+>>>>>>> 95c63a41bf7ee9ace67df945a6fcd2f301c0ffab
+}
+=======
+.bootstrap-select {
+    width: 100% !important;
+}
+
+>>>>>>> 6921bbe58f12f42a15080f4c70a69d1a04f4b3bc
