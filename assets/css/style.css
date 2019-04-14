@@ -1,10 +1,17 @@
 
+#signin ,#logout{
+  margin: 10px;
+}
 
 .doctorsCard  {
     display: none;
 }
 
 .diagnosisCard {
+    display: none;
+}
+
+#location-status {
     display: none;
 }
 
