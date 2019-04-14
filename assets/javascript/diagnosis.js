@@ -187,12 +187,18 @@ function fillSymptoms(selectId) {
 
     Object.keys(symptoms).forEach(function (symptomId) {
       var symptom = symptoms[symptomId];
+
+      // console.log(symptom.id);
+      // console.log(symptom.name);
+      
       var symptomOption = new $('<option>', {
-        value: symptom.ID,
-        text: symptom.Name
+        value: symptom.id,
+        text: symptom.name
       });
       $(selectId).append(symptomOption);
     })
+    //update html
+    $('.selectpicker').selectpicker('refresh');
   });
 
 
