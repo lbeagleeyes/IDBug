@@ -19,10 +19,6 @@ function geoFindMe(practice) {
     localStorage.setItem("longitude", position.coords.longitude)
 
     getDoctor(practice);
-
-
-
-
   }
   function error() {
     $("$location-status").show
@@ -38,7 +34,7 @@ function geoFindMe(practice) {
 }
 
 
-var getDoctor = function (practice) {
+ function getDoctor(practice) {
   var limit = 10
   var distance = 10
   var queryURL = "https://api.betterdoctor.com/2016-03-01/practices?name=" + practice +
