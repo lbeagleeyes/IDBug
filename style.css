@@ -14,6 +14,7 @@ font-family: 'Pragati Narrow', sans-serif;
 .searchBar {
 width: 33%;
 margin: 0 auto;
+padding: 0;
 }
 
 #patientInfo {
