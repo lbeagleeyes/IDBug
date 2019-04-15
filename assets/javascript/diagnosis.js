@@ -10,7 +10,7 @@
 // firebase.initializeApp(config);
 
 // var database = firebase.database();
-
+var currentPractice = ""
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
 
@@ -86,8 +86,10 @@ function showDiagnosis(response) {
         text: specialisationName,
         click: function () {
           //CALL find doctors method - sewon
-          //getDoctors(specializationName);
+          //getDoctor(specialisationName);
           geoFindMe(specialisationName);
+          currentPractice = specialisationName;
+          
         }
       });
       btnGroup.append(specializationBtn);
@@ -143,7 +145,7 @@ function showProposedSymptoms(response) {
 
 function getSpecializations(symptomsList, gender, birthYear) {
 
-  var queryURL = apiURL + "/diagnosis/specialisations?&symptoms=" + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
+  var queryURL = apiURL + " " + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
   getApiData(queryURL, showSpecializations);
 }
 

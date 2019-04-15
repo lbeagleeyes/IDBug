@@ -1,7 +1,7 @@
 
 //get user's geousrLctn
 var usrLctn = { latitude: "", longitude: "" };
-function geoFindMe(practice) {
+function geoFindMe(currentPractice) {
   const status = document.querySelector('#status');
   const mapLink = document.querySelector('#map-link');
   mapLink.href = '';
@@ -15,10 +15,12 @@ function geoFindMe(practice) {
     status.textContent = '';
     // mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
     mapLink.textContent = `Latitude: ${usrLctn.latitude} °, Longitude: ${usrLctn.longitude} °`;
-    localStorage.setItem("latitude", position.coords.latitude);
-    localStorage.setItem("longitude", position.coords.longitude)
+    //localStorage.setItem("latitude", practice.coords.latitude);
+    //localStorage.setItem("longitude", practice.coords.longitude)
 
-    getDoctor(practice);
+
+    //call betterdoctor api
+    getDoctor(currentPractice);
 
 
 
@@ -38,14 +40,16 @@ function geoFindMe(practice) {
 }
 
 
-var getDoctor = function (practice) {
+var getDoctor = function (currentPractice) {
   var limit = 10
   var distance = 10
-  var queryURL = "https://api.betterdoctor.com/2016-03-01/practices?name=" + practice +
+  var queryURL = "https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=" + currentPractice +
     "&location=" + usrLctn.latitude + "%2C" + usrLctn.longitude + "%2C" + + distance +
     "&user_location=" + usrLctn.latitude + "%2C" + usrLctn.longitude +
     "&skip=0&limit=" + limit +
     "&user_key=7e08d09b7f6c0a16e0d23968b6669bd7"
+
+   // https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=pediatrician&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=7e08d09b7f6c0a16e0d23968b6669bd7
 
   console.log(queryURL);
 
