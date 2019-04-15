@@ -1,4 +1,3 @@
-
 //get user's geousrLctn
 var usrLctn = { latitude: "", longitude: "" };
 function geoFindMe(currentPractice) {
@@ -91,6 +90,3 @@ var getDoctor = function (currentPractice) {
   //geoFindMe("dermatology");
   
   //document.querySelector('#user_location').addEventListener('click', geoFindMe("dermatology"));
-
-
-//});

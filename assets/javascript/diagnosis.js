@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Initialize Firebase
 // var config = {
 //   apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
@@ -12,11 +11,6 @@
 
 // var database = firebase.database();
 var currentPractice = ""
-=======
-
- var database = firebase.database();
-
->>>>>>> 820328db95ac7cffda185df5768d94d5d0d60345
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
 
@@ -120,11 +114,8 @@ function searchDiagnosis() {
 
   getDiagnosis(symptomsIds,gender, birthYear );
 
-<<<<<<< HEAD
   var queryURL = apiURL + " " + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
   getApiData(queryURL, showSpecializations);
-=======
->>>>>>> 820328db95ac7cffda185df5768d94d5d0d60345
 }
 
 
