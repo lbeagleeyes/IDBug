@@ -1,16 +1,16 @@
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
-  authDomain: "idbug-cb853.firebaseapp.com",
-  databaseURL: "https://idbug-cb853.firebaseio.com",
-  projectId: "idbug-cb853",
-  storageBucket: "idbug-cb853.appspot.com",
-  messagingSenderId: "345341406873"
-};
-firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
+//   authDomain: "idbug-cb853.firebaseapp.com",
+//   databaseURL: "https://idbug-cb853.firebaseio.com",
+//   projectId: "idbug-cb853",
+//   storageBucket: "idbug-cb853.appspot.com",
+//   messagingSenderId: "345341406873"
+// };
+// firebase.initializeApp(config);
 
-var database = firebase.database();
-
+// var database = firebase.database();
+var currentPractice = ""
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
 
@@ -86,8 +86,10 @@ function showDiagnosis(response) {
         text: specialisationName,
         click: function () {
           //CALL find doctors method - sewon
-          //getDoctors(specializationName);
-          geoFindMe(specializationName);
+          //getDoctor(specialisationName);
+          geoFindMe(specialisationName);
+          currentPractice = specialisationName;
+          
         }
       });
       btnGroup.append(specializationBtn);
@@ -143,7 +145,7 @@ function showProposedSymptoms(response) {
 
 function getSpecializations(symptomsList, gender, birthYear) {
 
-  var queryURL = apiURL + "/diagnosis/specialisations?&symptoms=" + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
+  var queryURL = apiURL + " " + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
   getApiData(queryURL, showSpecializations);
 }
 
