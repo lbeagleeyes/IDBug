@@ -160,4 +160,3 @@ function fillSymptoms(selectId) {
     $('.selectpicker').selectpicker('refresh');
   });
 }
-
