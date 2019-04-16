@@ -18,10 +18,10 @@ firebase.auth().onAuthStateChanged(function (user) {
 
   var database = firebase.database();
 
-  console.log(database)
+  // console.log(database)
 
   var email = user.email;
-  console.log(email);
+  // console.log(email);
 
   // variable user to keep track of connected users
   var connectionsRef = database.ref("/connections");
@@ -38,11 +38,19 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
   });
 
-  var userDB;
 
+  var userList = database.ref('/userDB/');
   database.ref('/userDB/').push({
     email: email
   })
+  
+  database.ref("/userDB").on("value", function(snap){
+    snap.forEach(function(childSnapshot){
+      var userList = childSnapshot.child("email").val()
+      console.log(userList);
+    })
+  })
+
 
 });
 

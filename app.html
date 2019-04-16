@@ -14,9 +14,7 @@
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
@@ -35,37 +33,29 @@
 </head>
 
 <body>
-
-
-    <nav>
-        <ul class="nav justify-content-end">
-            <button type="button" id="logout" class="btn btn-primary">
-                Log Out
-            </button>
-        </ul>
-    </nav>
+  <nav>
+    <ul class="nav justify-content-end">
+      <button type="button" id="logout" class="btn btn-primary">
+        Log Out
+      </button>
+    </ul>
+  </nav>
 
   <div class="jumbotron">
     <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
-
-  
-
-      <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
-
-      </select>
-
-  
+    <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
+    </select>
     <hr class="my-4">
     <form>
       <div class="form-row">
         <div class="form-group col-md-2">
           <label for="genderRadio">Patient's Gender:</label> <br>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="male">
+            <input class="form-check-input" type="radio" name="inlineGenderOptions" id="maleGender" value="male">
             <label class="form-check-label" for="maleGender">Male</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="female">
+            <input class="form-check-input" type="radio" name="inlineGenderOptions" id="femaleGender" value="female">
             <label class="form-check-label" for="femaleGender">Female</label>
           </div>
         </div>
@@ -74,12 +64,11 @@
           <label for="inputAge">Patient's Year of Birth</label>
           <select id="inputYearOfBirth" class="form-control">
             <option selected>Choose...</option>
-            <option>1980</option>
           </select>
         </div>
       </div>
     </form>
-    <a class="btn btn-primary btn-lg" id="searchBtn" href="#" role="button">Search</a>
+    <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
   </div>
 
   <div class="container-fluid">
@@ -110,7 +99,7 @@
             Sharing location Status
           </div>
           <div class="card-body">
-            
+
             <p id="status"></p>
             <a id="map-link" target="_blank"></a>
 
@@ -145,13 +134,19 @@
   <script src="assets/javascript/hmac-md5.js"></script>
   <script src="assets/javascript/enc-base64-min.js"></script>
 
-    <script src="assets/javascript/loggedin.js"></script>
+  <script src="assets/javascript/loggedin.js"></script>
   <script src="assets/javascript/diagnosis.js"></script>
+<<<<<<< HEAD
     <script src="assets/javascript/app.js"></script>
    <script src="assets/javascript/retrieve_doctors.js"></script>
    <script src="assets/javascript/storesearch.js"></script>
 
   
+=======
+  <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/retrieve_doctors.js"></script>
+
+>>>>>>> 5e081cdb3aa7f5a56f42b30c63006d72669b2963
   </div>
 </body>
 

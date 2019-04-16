@@ -9,8 +9,8 @@
 // };
 // firebase.initializeApp(config);
 
- var database = firebase.database();
-
+var database = firebase.database();
+var currentPractice = ""
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
 //var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
 
@@ -86,8 +86,10 @@ function showDiagnosis(response) {
         text: specialisationName,
         click: function () {
           //CALL find doctors method - sewon
-          //getDoctors(specializationName);
+          //getDoctor(specialisationName);
           geoFindMe(specialisationName);
+          currentPractice = specialisationName;
+          
         }
       });
       btnGroup.append(specializationBtn);
@@ -100,88 +102,46 @@ function showDiagnosis(response) {
   }
 }
 
-function getSymptomsList() {
-  var queryURL = apiURL + "/symptoms?language=en-gb";
-  getApiData(queryURL, saveSymptomList);
-}
+function searchDiagnosis() {
 
-function saveSymptomList(response) {
-  for (var i = 0; i < response.length; i++) {
-    console.log(response[i].ID);
-    console.log(response[i].Name);
+  var symptomsIds = $("#symptomsSelect").val();
+  console.log(symptomsIds);
+  var gender =  $('input[name="inlineGenderOptions"]:checked').val();
+  console.log(gender);
 
-    writeToDB('/symptoms/', response[i].Name, response[i].ID)
-  }
-}
+  var birthYear = $("#inputYearOfBirth").val();
+  console.log(birthYear);
 
-function getBodyLocations() {
-  var queryURL = apiURL + "/body/locations";
-  getApiData(queryURL, setBodyLocations);
-}
+  getDiagnosis(symptomsIds,gender, birthYear );
 
-function setBodyLocations(response) {
-  for (var i = 0; i < response.length; i++) {
-    console.log(response[i].ID);
-    console.log(response[i].Name);
-
-    writeToDB('/bodyLocations/', response[i].Name, response[i].ID)
-  }
-}
-
-function getProposedSymptoms() {
-  var queryURL = apiURL + '/diagnosis?&symptoms=' + JSON.stringify(symptomIdList) + '&gender=' + gender + '&year_of_birth=' + birthYear;
-  getApiData(queryURL, showProposedSymptoms);
-}
-
-function showProposedSymptoms(response) {
-
-  for (var i = 0; i < response.length; i++) {
-    console.log(response.ID);
-    console.log(response.Name);
-  }
-}
-
-function getSpecializations(symptomsList, gender, birthYear) {
-
-  var queryURL = apiURL + "/diagnosis/specialisations?&symptoms=" + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
+  var queryURL = apiURL + " " + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
   getApiData(queryURL, showSpecializations);
 }
 
-function showSpecializations(response) {
-
-  console.log(response);
-  for (var i = 0; i < response.length; i++) {
-    console.log(response.ID);
-    console.log(response.Name);
-    console.log(response.Accuracy);
-  }
-}
-
-
-function writeToDB(tableName, name, id) {
-  database.ref(tableName).push({
-    name: name,
-    id: id
-  });
-
-}
 
 $(document).ready(function () {
 
-  // var test1 = [73, 9, 15];
-
-  // getDiagnosis(test1, "female", 1980);
-
-  //readSymptoms();
-
   fillSymptoms("#symptomsSelect");
 
+  fillYears("#inputYearOfBirth");
+
 });
+
+function fillYears(selectId){
+  currentYear = 2019;
+  for(var i=currentYear; i>currentYear-100; i--) {
+    var yearOption = new $('<option>', {
+      value: i,
+      text: i
+    });
+    $(selectId).append(yearOption);
+  }
+}
 
 function fillSymptoms(selectId) {
 
   database.ref('/symptoms/').on("value", function (snapshot) {
-    console.log(snapshot.val());
+    // console.log(snapshot.val());
     var symptoms = snapshot.val();
 
     Object.keys(symptoms).forEach(function (symptomId) {
@@ -198,26 +158,5 @@ function fillSymptoms(selectId) {
     })
     //update html
     $('.selectpicker').selectpicker('refresh');
-  });
-
-
-}
-
-
-function readSymptoms() {
-
-  database.ref('/symptoms/').on("value", function (snapshot) {
-    console.log(snapshot.val());
-    var symptoms = snapshot.val();
-
-    Object.keys(symptoms).forEach(function (symptomId) {
-      var symptom = symptoms[symptomId];
-
-      console.log(symptom.name);
-      console.log(symptom.id);
-
-      //Add your list box code here
-      //creatListBoxItem(symptom);
-    })
   });
 }
