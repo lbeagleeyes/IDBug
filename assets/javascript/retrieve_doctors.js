@@ -3,8 +3,8 @@ var usrLctn = { latitude: "", longitude: "" };
 function geoFindMe(currentPractice) {
   const status = document.querySelector('#status');
   const mapLink = document.querySelector('#map-link');
-  mapLink.href = '';
-  mapLink.textContent = '';
+  // mapLink.href = '';
+  // mapLink.textContent = '';
 
   function success(position) {
     usrLctn.latitude = position.coords.latitude;
@@ -70,15 +70,13 @@ var getDoctor = function (currentPractice) {
       for (var i = 0; i < data.length; i++) {
         var name = data[i].name;
         var distance = parseInt(data[i].distance);
-
         var address = data[i].visit_address.street + "," + data[i].visit_address.city + " " + data[i].visit_address.state + " " + data[i].visit_address.zip
-
-        console.log(createGoogleMapsLink(address));
-
+        var addressLink = createGoogleMapsLink(address);
+        var addressHref = '<a target="_blank" href="'+ addressLink +'">'+address +'</a>'
         var newRow = $("<tr>").append(
           $("<td>").text(name),
           $("<td>").text(distance),
-          $("<td>").text(address)
+          $("<td>").html(addressHref)
         );
         $("#doctorsList").append(newRow);
       }
@@ -87,9 +85,3 @@ var getDoctor = function (currentPractice) {
     });
 
 }
-
-
-//$(document).ready(function () {
-  //geoFindMe("dermatology");
-  
-  //document.querySelector('#user_location').addEventListener('click', geoFindMe("dermatology"));
