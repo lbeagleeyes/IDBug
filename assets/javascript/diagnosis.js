@@ -54,6 +54,9 @@ function getDiagnosis(symptomIdList, gender, birthYear) {
 function showDiagnosis(response) {
   console.log(response);
 
+ // $(".diagnosisCard").empty();
+  $(".diagnosisCard").show();
+
   if (response.length < 1) {
 
     $(".diagnosisCard").append($('<h3>').text("No diagnosis found. Please enter more symptoms and try again."));
@@ -61,7 +64,7 @@ function showDiagnosis(response) {
 
   }
 
-  $(".diagnosisCard").show();
+  
   for (var i = 0; i < response.length; i++) {
     var issue = response[i].Issue;
 
@@ -85,8 +88,7 @@ function showDiagnosis(response) {
         'data-specialisation': specialisationName,
         text: specialisationName,
         click: function () {
-          //CALL find doctors method - sewon
-          //getDoctor(specialisationName);
+          //CALL find doctors method 
           geoFindMe(specialisationName);
           currentPractice = specialisationName;
           
@@ -114,8 +116,7 @@ function searchDiagnosis() {
 
   getDiagnosis(symptomsIds,gender, birthYear );
 
-  var queryURL = apiURL + " " + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
-  getApiData(queryURL, showSpecializations);
+  //saveSearch(symptomsIds, gender, birthYear);
 }
 
 
@@ -128,7 +129,7 @@ $(document).ready(function () {
 });
 
 function fillYears(selectId){
-  currentYear = 2019;
+  currentYear = moment().year();
   for(var i=currentYear; i>currentYear-100; i--) {
     var yearOption = new $('<option>', {
       value: i,

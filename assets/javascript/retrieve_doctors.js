@@ -73,6 +73,8 @@ var getDoctor = function (currentPractice) {
 
         var address = data[i].visit_address.street + "," + data[i].visit_address.city + " " + data[i].visit_address.state + " " + data[i].visit_address.zip
 
+        console.log(createGoogleMapsLink(address));
+
         var newRow = $("<tr>").append(
           $("<td>").text(name),
           $("<td>").text(distance),
