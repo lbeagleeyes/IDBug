@@ -38,18 +38,21 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
   });
 
-  // $(document).on("click", "#searchBtn", saveSearch)
+  $(document).on("click", "#searchBtn", saveSearch)
 
-  // function saveSearch() {
+  function saveSearch() {
+    var symptomsIds = $("#symptomsSelect").val();
+    var gender = $('input[name="inlineGenderOptions"]:checked').val();
+    var birthYear = $("#inputYearOfBirth").val();
 
-  //   var userList = database.ref('/userDB/');
-  //   database.ref('/userDB/').push({
-  //     email: email,
-  //     symptomsIds: symptomsIds,
-  //     gender: gender,
-  //     birthYear: birthYear
-  //   })
-  // }
+    var userList = database.ref('/userDB/');
+    database.ref('/userDB/').push({
+      email: email,
+      symptomsIds: symptomsIds,
+      gender: gender,
+      birthYear: birthYear
+    })
+  }
 
 
   database.ref("/userDB").on("value", function (snap) {
