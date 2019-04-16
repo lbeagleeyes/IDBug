@@ -42,7 +42,7 @@ function geoFindMe(currentPractice) {
 var getDoctor = function (currentPractice) {
   var limit = 10
   var distance = 10
-  var queryURL = "https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=" + currentPractice +
+  var queryURL = "https://api.betterdoctor.com/2016-03-01/practices?name=" + currentPractice +
     "&location=" + usrLctn.latitude + "%2C" + usrLctn.longitude + "%2C" + + distance +
     "&user_location=" + usrLctn.latitude + "%2C" + usrLctn.longitude +
     "&skip=0&limit=" + limit +
@@ -80,6 +80,7 @@ var getDoctor = function (currentPractice) {
         );
         $("#doctorsList").append(newRow);
       }
+      $('.doctorsCard').show();
 
     });
 
