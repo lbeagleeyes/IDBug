@@ -114,8 +114,7 @@ function searchDiagnosis() {
 
   getDiagnosis(symptomsIds,gender, birthYear );
 
-  var queryURL = apiURL + " " + JSON.stringify(symptomsList) + "&gender=" + gender + "&year_of_birth=" + birthYear;
-  getApiData(queryURL, showSpecializations);
+  //saveSearch(symptomsIds, gender, birthYear);
 }
 
 
