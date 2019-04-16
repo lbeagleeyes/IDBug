@@ -4,24 +4,52 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>IDBug</title>
+  <title>IDBug // Search Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Khand|Pragati+Narrow" rel="stylesheet">
   <script src="assets/javascript/hmac-md5.js"></script>                        
   <script src="assets/javascript/enc-base64-min.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
   <script src="assets/javascript/diagnosis.js"></script>
- 
-</head>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
+  <!-- bootstrap select -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/css/bootstrap-select.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/js/bootstrap-select.min.js"></script>
+
+  <!-- local stylesheet -->
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+</head>
 <body>
+  <!-- Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navigation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Search History</a>
+            <a class="nav-item nav-link" id="logOut" href="#"> Log Out</a>
+          </div>
+        </div>
+      </nav>
+
 <div class='Main'>
   <div class="jumbotron">
     <h1 class="display-4" id='header'>ID-Bug <img src='assets/images/bug.jpg' width='50' length='50'></h1>
@@ -43,34 +71,6 @@
     <hr class="my-4">
       <div class="form-row" id='patientInfo'>
           <form>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
-  <!-- bootstrap select -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/css/bootstrap-select.min.css">
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/js/bootstrap-select.min.js"></script>
-
-  <!-- local stylesheet -->
-  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
-
-</head>
-
 <body>
 
 
@@ -185,10 +185,8 @@
           </table>
         </div>
       </div>
-
-
+       
       <div class="col-md-6">
-
         <div class="card doctorsCard">
           <div class="card-header">
             Doctors
@@ -221,10 +219,6 @@
 
   </div>
 </div>
-
-
-
-
     </br>
     <div class="col-md-6 offset-md-6">
 
@@ -246,16 +240,12 @@
       </div>
     </div>
   </div>
-  <script src="assets/javascript/hmac-md5.js"></script>
-  <script src="assets/javascript/enc-base64-min.js"></script>
-
-    <script src="assets/javascript/loggedin.js"></script>
-  <script src="assets/javascript/diagnosis.js"></script>
-    <script src="assets/javascript/app.js"></script>
-   <script src="assets/javascript/retrieve_doctors.js"></script>
-  
   </div>
-
+<script src="assets/javascript/hmac-md5.js"></script>
+<script src="assets/javascript/enc-base64-min.js"></script>
+<script src="assets/javascript/loggedin.js"></script>
+<script src="assets/javascript/diagnosis.js"></script>
+<script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/retrieve_doctors.js"></script>
 </body>
-
 </html>
