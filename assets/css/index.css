@@ -1,9 +1,8 @@
 *{
-    background-color:rgb(55, 56, 55);
+    background-color:rgb(35, 35, 35);
     color: rgb(161, 209, 89);
     font-family: 'Khand', sans-serif;
 }
-
 #signin {
     margin: 10px;
     display: auto;
@@ -16,8 +15,8 @@
         }
 
 #indexLogo {
-width: 100%;
-text-align:center;
+    width: 100%;
+    text-align:center;
 }
 
 .nav {
@@ -33,7 +32,7 @@ text-align:center;
     text-align: center;
 }
 
-.modal-content {
+.modal-content {    
     border-color: black !important;
 }
 #bugLogo {
