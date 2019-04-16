@@ -114,7 +114,9 @@ function searchDiagnosis() {
   var birthYear = $("#inputYearOfBirth").val();
   console.log(birthYear);
 
+ 
   getDiagnosis(symptomsIds,gender, birthYear );
+
 
   //saveSearch(symptomsIds, gender, birthYear);
 }
