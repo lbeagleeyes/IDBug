@@ -119,6 +119,20 @@ function searchDiagnosis() {
   //saveSearch(symptomsIds, gender, birthYear);
 }
 
+function clearSearch(){
+
+  $("#symptomsSelect").empty();
+  $('.selectpicker').selectpicker('refresh');
+
+  $('#maleGender').prop('checked',false);
+  $('#femaleGender').prop('checked',false);
+  $("#inputYearOfBirth").val("");
+
+  $(".diagnosisCard").empty();
+  $(".doctorsCard").empty();
+
+}
+
 
 $(document).ready(function () {
 

@@ -84,8 +84,15 @@
 
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <a class="btn btn-light btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
+        </div>
 
-      <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
+        <div class="form-group col-md-2">
+          <a class="btn btn-light btn-lg" id="clearBtn" onclick="clearSearch()" role="button">Clear</a>
+        </div>
+      </div>
 
     </form>
 
@@ -131,16 +138,16 @@
         </div>
       </div>
       <div class="card" id="location-status">
-          <div class="card-header">
-            Sharing location Status
-          </div>
-          <div class="card-body">
-
-            <p id="status"></p>
-            <a id="map-link" target="_blank"></a>
-
-          </div>
+        <div class="card-header">
+          Sharing location Status
         </div>
+        <div class="card-body">
+
+          <p id="status"></p>
+          <a id="map-link" target="_blank"></a>
+
+        </div>
+      </div>
     </div>
   </div>
   <script src="assets/javascript/hmac-md5.js"></script>
