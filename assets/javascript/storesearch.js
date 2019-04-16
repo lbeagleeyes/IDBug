@@ -38,14 +38,22 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
   });
 
+  // $(document).on("click", "#searchBtn", saveSearch)
 
-  var userList = database.ref('/userDB/');
-  database.ref('/userDB/').push({
-    email: email
-  })
-  
-  database.ref("/userDB").on("value", function(snap){
-    snap.forEach(function(childSnapshot){
+  // function saveSearch() {
+
+  //   var userList = database.ref('/userDB/');
+  //   database.ref('/userDB/').push({
+  //     email: email,
+  //     symptomsIds: symptomsIds,
+  //     gender: gender,
+  //     birthYear: birthYear
+  //   })
+  // }
+
+
+  database.ref("/userDB").on("value", function (snap) {
+    snap.forEach(function (childSnapshot) {
       var userList = childSnapshot.child("email").val()
       console.log(userList);
     })
