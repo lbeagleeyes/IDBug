@@ -55,13 +55,32 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 
 
-  database.ref("/userDB").on("value", function (snap) {
-    snap.forEach(function (childSnapshot) {
-      var userList = childSnapshot.child("email").val()
-      console.log(userList);
-    })
-  })
+  // database.ref("/userDB").on("value", function (snap) {
+  //   snap.forEach(function (childSnapshot) {
+  //     var userList = childSnapshot.child("email").val()
+  //     console.log(userList);
+  //   })
+  // })
 
+  // Display user's past symptoms
+  function pastSearches() {
+    database.ref("/userDB").on("value", function (snap) {
+      snap.forEach(function (childSnapshot) {
+        var userEmail = childSnapshot.child("email").val()
+        if (userEmail === user.email) {
+          console.log(childSnapshot.child("symptomsIds").val())
+          console.log(childSnapshot.child("gender").val())
+          console.log(childSnapshot.child("birthYear").val())
+          
+        }
+
+      })
+    })
+  }
+
+pastSearches();
 
 });
+
+
 

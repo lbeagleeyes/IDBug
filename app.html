@@ -6,16 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>IDBug // Search Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Khand|Pragati+Narrow" rel="stylesheet">
-  <script src="assets/javascript/hmac-md5.js"></script>                        
+  <script src="assets/javascript/hmac-md5.js"></script>
   <script src="assets/javascript/enc-base64-min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
   <script src="assets/javascript/diagnosis.js"></script>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -35,45 +36,16 @@
   <!-- local stylesheet -->
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
 </head>
+
 <body>
   <!-- Nav Bar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navigation</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Search History</a>
-            <a class="nav-item nav-link" id="logOut" href="#"> Log Out</a>
-          </div>
-        </div>
-      </nav>
-
-<div class='Main'>
-  <div class="jumbotron">
-    <h1 class="display-4" id='header'>ID-Bug <img src='assets/images/bug.jpg' width='50' length='50'></h1>
-    <h2 class='display-5' id='header2'>What symptoms are you feeling? Enter them here.</h2>
-
-    <div class="symptomsContainer">
-      <div class="searchBar">
-       
-          <input type="text" class="form-control symptomSearch" id="symptomSearch1" onkeyup="searchForSymptoms()" placeholder="Search..." aria-label="Symptoms" aria-describedby="Symptoms-list">
-          <button type="button" id='addbutton'class="btn btn-light plusBtn">+</button>
-
-          <ul id="symptoms">
-
-            
-          </ul>
-          
-        </div>  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#">Search History</a>
+      </div>
     </div>
-    <hr class="my-4">
-      <div class="form-row" id='patientInfo'>
-          <form>
-<body>
-  <nav>
     <ul class="nav justify-content-end">
       <button type="button" id="logout" class="btn btn-primary">
         Log Out
@@ -81,49 +53,12 @@
     </ul>
   </nav>
 
+
   <div class="jumbotron">
-
-    <h1 class="display-4" id='header'>IDBug - Enter your symptoms to get help</h1>
-    <div class="symptomsContainer">
-      <div class="row">
-        <div class="left" style="background-color:#bbb;">
-          <h2>Symptoms</h2>
-          <input type="text" id="mySearch" onkeyup="generateSymptoms()" placeholder="Search.." >
-          <ul id="symptoms">
-            
-          </ul>
-        </div>
-
     <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
 
-
-
-    <div class="symptomsContainer">
-      <div class="row">
-        <div class="col-md-3">
-          <input type="text" class="form-control symptomSearch" id="symptomSearch1" onkeyup="searchForSymptoms()" placeholder="Search..." aria-label="Symptoms" aria-describedby="Symptoms-list">
-          <ul id="symptoms">
-            
-          </ul>
-          
-        </div>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-light plusBtn">+</button>
-        </div>
-      </div>
-              
-
-    </div>
-
-  
-
-      <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
-
-      </select>
-
-  
-
-
+    <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
+    </select>
     <hr class="my-4">
     <form>
       <div class="form-row">
@@ -138,11 +73,6 @@
             <input class="form-check-input" type="radio" name="inlineGenderOptions" id="femaleGender" value="female">
             <label class="form-check-label" for="femaleGender">Female</label>
           </div>
-
-       
-
-        
-
         </div>
 
         <div class="form-group col-md-2">
@@ -152,16 +82,12 @@
             <option selected>Choose...</option>
           </select>
 
-          <a class="btn btn-primary btn-lg" id="searchBtn" href="#" role="button">Search</a>
         </div>
       </div>
-    </div>
-    </form>
 
-        </div>
-      </div>
+      <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
+
     </form>
-  <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
 
   </div>
 
@@ -185,8 +111,8 @@
           </table>
         </div>
       </div>
-       
-      <div class="col-md-6">
+
+      <div class="col-md-6 ">
         <div class="card doctorsCard">
           <div class="card-header">
             Doctors
@@ -194,16 +120,17 @@
           <table class="table" id="doctorsTable">
             <thead>
               <tr>
-                <th scope="col">Doctor</th>
-                <th scope="col">Specialization</th>
+                <th scope="col">Medical Facility</th>
+                <th scope="col">Distance (miles)</th>
                 <th scope="col">Address</th>
               </tr>
             </thead>
             <tbody id="doctorsList">
             </tbody>
           </table>
-
-        <div class="card" id="location-status">
+        </div>
+      </div>
+      <div class="card" id="location-status">
           <div class="card-header">
             Sharing location Status
           </div>
@@ -214,10 +141,9 @@
 
           </div>
         </div>
-      </div>
     </div>
-
   </div>
+<<<<<<< HEAD
 </div>
     </br>
     <div class="col-md-6 offset-md-6">
@@ -260,5 +186,14 @@
 <script src="assets/javascript/diagnosis.js"></script>
 <script src="assets/javascript/app.js"></script>
 <script src="assets/javascript/retrieve_doctors.js"></script>
+=======
+  <script src="assets/javascript/hmac-md5.js"></script>
+  <script src="assets/javascript/enc-base64-min.js"></script>
+  <script src="assets/javascript/loggedin.js"></script>
+  <script src="assets/javascript/diagnosis.js"></script>
+  <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/retrieve_doctors.js"></script>
+>>>>>>> f4d437fcc3b17a4b220ba5115976533d12b50d79
 </body>
+
 </html>
