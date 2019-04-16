@@ -1,7 +1,7 @@
 *{
   background-color:rgb(35, 35, 35)!important;
   color: rgb(161, 209, 89) !important;
-  border-color: white !important  ;
+  border-color: white !important;
 }
 .bg-light {
   background-color:rgb(35, 35, 35) !important;
@@ -13,7 +13,6 @@
   background-color:rgb(35, 35, 35);
   border-color: rgb(161, 209, 89);
 }
-
 
 .navbar {
   width: 100%;
