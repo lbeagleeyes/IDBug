@@ -1,3 +1,4 @@
+
 function createGoogleMapsLink(destination) {
 
     //direction query URL that takes the user to Google Maps with origin and destination already plugged into the search. Also includes travelmode (ie. walking, driving, bicycle)
@@ -11,6 +12,7 @@ function createGoogleMapsLink(destination) {
 function replaceSpace(loc) {
     return loc.split(' ').join('+');
 }
+
 
 
 
