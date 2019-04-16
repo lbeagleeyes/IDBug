@@ -1,0 +1,13 @@
+*{
+  background-color:rgb(55, 56, 55);
+}
+.bg-light {
+  background-color:rgb(55, 56, 55) !important;
+}
+.jumbotron {
+  background-color:rgb(55, 56, 55);
+}
+.btn-light {
+  background-color:rgb(55, 56, 55);
+  border-color: rgb(161, 209, 89);
+}

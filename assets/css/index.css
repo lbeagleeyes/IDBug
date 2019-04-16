@@ -1,0 +1,41 @@
+*{
+    background-color:rgb(55, 56, 55);
+    color: rgb(161, 209, 89);
+    font-family: 'Khand', sans-serif;
+}
+
+#signin {
+    margin: 10px;
+    display: auto;
+}
+
+
+ #mainText {
+    font-family: 'Khand', sans-serif;
+    font-size: 90px;
+        }
+
+#indexLogo {
+width: 100%;
+text-align:center;
+}
+
+.nav {
+    width: 12%;
+    margin: 0 auto;
+}
+
+
+.btn-primary {
+    background-color:rgb(161, 209, 89) !important;
+    border-color: rgb(161, 209, 89) !important;
+    color: rgb(55, 56, 55) !important;
+    text-align: center;
+}
+
+.modal-content {
+    border-color: black !important;
+}
+#bugLogo {
+    margin-left: 10px;
+}
