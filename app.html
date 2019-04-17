@@ -10,10 +10,10 @@
 
 
   <link href="https://fonts.googleapis.com/css?family=Khand|Pragati+Narrow" rel="stylesheet">
-  
+
   <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
- 
+
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,6 +24,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+    <!-- parsley input validator -->
+    <!-- <script src="assets/javascript/parsley.js"></script>
+    <script src="assets/javascript/parsley.min.js"></script> -->
 
   <!-- moment js-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
@@ -58,16 +62,16 @@
       <div class="col-6">
         <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
 
-        <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
+        <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect" required>
         </select>
         <hr class="my-4">
-        <form>
+        <form id="input-form" onsubmit="searchDiagnosis()"  >
           <div class="form-row">
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
 
               <label for="genderRadio">Patient's Gender:</label> <br>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineGenderOptions" id="maleGender" value="male">
+                <input class="form-check-input" type="radio" name="inlineGenderOptions" id="maleGender" value="male" required>
                 <label class="form-check-label" for="maleGender">Male</label>
 
                 <input class="form-check-input" type="radio" name="inlineGenderOptions" id="femaleGender"
@@ -76,19 +80,24 @@
               </div>
             </div>
 
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
 
-              <label for="inputAge">Patient's Year of Birth</label>
-              <select id="inputYearOfBirth" class="form-control">
-                <option selected>Choose...</option>
+              <label for="inputYearOfBirth">Patient's Year of Birth</label>
+              <select id="inputYearOfBirth" class="form-control" required>
+                  <option disabled value="" selected hidden>Choose...</option>
               </select>
 
             </div>
           </div>
 
-          <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
-          <a class="btn btn-primary btn-lg" id="searchBtn" onclick="clearSearch()" role="button">Clear Search</a>
-
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <input type="submit" class="btn btn-primary btn-lg" id="searchBtn" role="button">
+            </div>
+            <div class="form-group col-md-3">
+              <a class="btn btn-primary btn-lg" id="searchBtn" onclick="clearSearch()" role="button">Clear Search</a>
+            </div>
+          </div>
         </form>
       </div>
 
@@ -100,8 +109,8 @@
           <table class="table" id="searchTable">
             <thead>
               <tr>
-                <th scope="col">Gender</th>
                 <th scope="col">Birth Year</th>
+                <th scope="col">Gender</th>
                 <th scope="col">Symptoms</th>
                 <th scope="col"></th>
               </tr>
@@ -172,7 +181,6 @@
         </div>
       </div>
 
-
       <script src="assets/javascript/hmac-md5.js"></script>
       <script src="assets/javascript/enc-base64-min.js"></script>
       <script src="assets/javascript/loggedin.js"></script>
@@ -180,7 +188,7 @@
       <script src="assets/javascript/diagnosis.js"></script>
       <script src="assets/javascript/app.js"></script>
       <script src="assets/javascript/retrieve_doctors.js"></script>
-      
+
 
 </body>
 

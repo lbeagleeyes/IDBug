@@ -22,8 +22,9 @@
 
 .form-control {
   width: 75%;
-  text-align: center;
+  /* text-align: center; */
 }
+
 
 #signin {
   margin: 10px;
@@ -64,6 +65,7 @@
   #header2{
   font-size: 16px;
   font-family: 'Pragati Narrow', sans-serif;
+  text-align: center;
   
   }
   
@@ -78,10 +80,7 @@
     margin: 0 auto;
     text-align:center;
   }
-  
-  #header2 {
-    text-align: center;
-  }
+
   
   #inputYearOfBirth {
   margin-top: 20px;

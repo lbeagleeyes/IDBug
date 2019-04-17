@@ -42,7 +42,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 function saveSearch() {
 
-
   var symptomsIds = $("#symptomsSelect").val();
   var gender = $('input[name="inlineGenderOptions"]:checked').val();
   var birthYear = $("#inputYearOfBirth").val();
@@ -64,25 +63,14 @@ function saveSearch() {
 }
 
 
-
+//display past searches
 database.ref("/userDB").on("child_added", function (snap) {
-  $("#searchList").children().empty();
    createHistoryRows(snap);
 });
 
-// Display user's past symptoms
-function showPastSearches() {
 
-  database.ref("/userDB").on("value", function (snap) {
-    snap.forEach(function (childSnapshot) {
-
-      createHistoryRows(childSnapshot);
-    })
-  })
-}
 
 function createHistoryRows(childSnapshot) {
-
 
   var userEmail = childSnapshot.child("email").val()
   if (userEmail === email) {
@@ -109,6 +97,7 @@ function createHistoryRows(childSnapshot) {
       class: "btn btn-light searchBtn",
       text: "Search",
       click: function () {
+        clearSearch();
         searchDiagnosis(symptomsIds, userGender, userBirthYear);
       }
     });

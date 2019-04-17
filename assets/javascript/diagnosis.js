@@ -89,6 +89,7 @@ function showDiagnosis(response) {
         text: specialisationName,
         click: function () {
           //CALL find doctors method 
+          clearDoctors();
           geoFindMe(specialisationName);
           currentPractice = specialisationName;
 
@@ -106,6 +107,8 @@ function showDiagnosis(response) {
 
 function searchDiagnosis(symptomsIds = [], gender = "", birthYear = "") {
 
+  event.preventDefault();
+
   if (symptomsIds.length < 1 && gender == "" && birthYear == "") {
 
     symptomsIds = $("#symptomsSelect").val();
@@ -120,6 +123,7 @@ function searchDiagnosis(symptomsIds = [], gender = "", birthYear = "") {
     saveSearch();
   }
 
+  clearResults();
   getDiagnosis(symptomsIds, gender, birthYear);
 }
 
@@ -132,11 +136,7 @@ function clearSearch() {
   $('#femaleGender').prop('checked', false);
   $("#inputYearOfBirth").val("");
 
-  $("#diagnosisList").empty();
-  $("#doctorsList").empty();
-
-  $("#status").text("");
-
+  clearResults();
 }
 
 
@@ -146,9 +146,17 @@ $(document).ready(function () {
 
   fillYears("#inputYearOfBirth");
 
-  showPastSearches();
-
 });
+
+function clearResults() {
+  $("#diagnosisList").empty();
+  clearDoctors();
+}
+
+function clearDoctors() {
+  $("#doctorsList").empty();
+  $("#searchStatus").text("");
+}
 
 function fillYears(selectId) {
   currentYear = moment().year();
