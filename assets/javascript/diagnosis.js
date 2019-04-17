@@ -54,7 +54,7 @@ function getDiagnosis(symptomIdList, gender, birthYear) {
 function showDiagnosis(response) {
   console.log(response);
 
- // $(".diagnosisCard").empty();
+  // $(".diagnosisCard").empty();
   $(".diagnosisCard").show();
 
   if (response.length < 1) {
@@ -64,7 +64,7 @@ function showDiagnosis(response) {
 
   }
 
-  
+
   for (var i = 0; i < response.length; i++) {
     var issue = response[i].Issue;
 
@@ -91,7 +91,7 @@ function showDiagnosis(response) {
           //CALL find doctors method 
           geoFindMe(specialisationName);
           currentPractice = specialisationName;
-          
+
         }
       });
       btnGroup.append(specializationBtn);
@@ -108,26 +108,26 @@ function searchDiagnosis() {
 
   var symptomsIds = $("#symptomsSelect").val();
   console.log(symptomsIds);
-  var gender =  $('input[name="inlineGenderOptions"]:checked').val();
+  var gender = $('input[name="inlineGenderOptions"]:checked').val();
   console.log(gender);
 
   var birthYear = $("#inputYearOfBirth").val();
   console.log(birthYear);
 
- 
-  getDiagnosis(symptomsIds,gender, birthYear );
+  getDiagnosis(symptomsIds, gender, birthYear);
 
-
-  //saveSearch(symptomsIds, gender, birthYear);
+  saveSearch();
 }
 
-function clearSearch(){
+
+
+function clearSearch() {
 
   $("#symptomsSelect").val("");
   $('.selectpicker').selectpicker('refresh');
 
-  $('#maleGender').prop('checked',false);
-  $('#femaleGender').prop('checked',false);
+  $('#maleGender').prop('checked', false);
+  $('#femaleGender').prop('checked', false);
   $("#inputYearOfBirth").val("");
 
   $("#diagnosisList").empty();
@@ -146,9 +146,9 @@ $(document).ready(function () {
 
 });
 
-function fillYears(selectId){
+function fillYears(selectId) {
   currentYear = moment().year();
-  for(var i=currentYear; i>currentYear-100; i--) {
+  for (var i = currentYear; i > currentYear - 100; i--) {
     var yearOption = new $('<option>', {
       value: i,
       text: i
@@ -168,9 +168,10 @@ function fillSymptoms(selectId) {
 
       // console.log(symptom.id);
       // console.log(symptom.name);
-      
+
       var symptomOption = new $('<option>', {
         value: symptom.id,
+        'data-symptomName': symptom.name,
         text: symptom.name
       });
       $(selectId).append(symptomOption);
