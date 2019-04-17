@@ -45,10 +45,16 @@ firebase.auth().onAuthStateChanged(function (user) {
     var gender = $('input[name="inlineGenderOptions"]:checked').val();
     var birthYear = $("#inputYearOfBirth").val();
 
+    var names = [];
+    $('#symptomsSelect option:selected').each(function () { names.push($(this).text()); });
+    var symptomsNames = names.join(', ');
+    console.log(symptomsNames)
+
     var userList = database.ref('/userDB/');
     database.ref('/userDB/').push({
       email: email,
-      symptomsIds: symptomsIds,
+      // symptomsIds: symptomsIds,
+      symptomsNames: symptomsNames,
       gender: gender,
       birthYear: birthYear
     })
@@ -68,7 +74,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       snap.forEach(function (childSnapshot) {
         var userEmail = childSnapshot.child("email").val()
         if (userEmail === user.email) {
-          var userSymptoms = (childSnapshot.child("symptomsIds").val())
+          var userSymptoms = (childSnapshot.child("symptomsNames").val())
           var userGender = (childSnapshot.child("gender").val())
           var userBirthYear = (childSnapshot.child("birthYear").val())
 
@@ -103,7 +109,7 @@ firebase.auth().onAuthStateChanged(function (user) {
           symptomsCol.append(symCol);
           row.append(symptomsCol);
 
-          $("#searchList").append("<tr><td>" + userGender + "</td><td>" + userBirthYear + "</td><td>" + userSymptoms + "</td>" + "<td><button type='button' class='btn btn-primary'>Search</button></td></tr>");
+          $("#searchList").append("<tr><td>" + userGender + "</td><td>" + userBirthYear + "</td><td>" + userSymptoms + "</td>" + "<td><button type='button' id='oldsearchBtn' class='btn btn-primary'>Search</button></td></tr>");
 
         }
 
@@ -114,6 +120,9 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 
   pastSearches();
+
+  $(document).on("click", "#oldsearchBtn", getDiagnosis());
+
 
 });
 
