@@ -116,7 +116,7 @@ function searchDiagnosis() {
 
   getDiagnosis(symptomsIds,gender, birthYear );
 
-  //saveSearch(symptomsIds, gender, birthYear);
+  saveSearch();
 }
 
 function clearSearch(){
