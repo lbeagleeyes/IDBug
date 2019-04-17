@@ -121,6 +121,21 @@ function createHistoryRows(childSnapshot) {
   }
 }
 
+$(".searchCard").hide();
+
+
+var showHistory = false;
+
+$(document).on("click", "#searchhistory", function (event) {
+  if (showHistory === false) {
+    $(".searchCard").show();
+    showHistory = true
+  }
+  else if(showHistory === true){
+    $(".searchCard").hide();
+    showHistory = false;
+  }
+})
 
 
     //$(document).on("click", "#oldsearchBtn", getDiagnosis());
