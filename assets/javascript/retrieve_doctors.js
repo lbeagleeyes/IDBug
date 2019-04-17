@@ -75,7 +75,7 @@ var getDoctor = function (currentPractice) {
       $('.doctorsCard').show();
 
       if (response.data.length < 1) {
-        $("#status").text("No doctors found for this specialization.");
+        $("#searchStatus").text("No doctors found for this specialization.");
         return;
       }
 
