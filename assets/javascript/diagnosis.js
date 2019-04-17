@@ -59,7 +59,7 @@ function showDiagnosis(response) {
 
   if (response.length < 1) {
 
-    $(".diagnosisCard").append($('<h3>').text("No diagnosis found. Please enter more symptoms and try again."));
+    $("#status").text("No diagnosis found. Please enter more symptoms and try again.");
     return;
 
   }
@@ -117,6 +117,22 @@ function searchDiagnosis() {
   getDiagnosis(symptomsIds,gender, birthYear );
 
   //saveSearch(symptomsIds, gender, birthYear);
+}
+
+function clearSearch(){
+
+  $("#symptomsSelect").val("");
+  $('.selectpicker').selectpicker('refresh');
+
+  $('#maleGender').prop('checked',false);
+  $('#femaleGender').prop('checked',false);
+  $("#inputYearOfBirth").val("");
+
+  $("#diagnosisList").empty();
+  $("#doctorsList").empty();
+
+  $("#status").text("");
+
 }
 
 

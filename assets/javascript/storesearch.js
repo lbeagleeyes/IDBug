@@ -105,7 +105,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
           // $("#searchList").append("<tr><td>"+userGender+"</td><td>"+userBirthYear+"</td><td>"+userSymptoms+"</td></tr>");
 
-          $("#searchList").append(row);
+          $("#searchList").append(row);  
 
           //   $("#searchdisplay").append("<div class='modal fade' id='exampleModalLong' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>" + "<div class='modal-dialog' role='document'>" +
           //     "<div class='modal-content'>" +
