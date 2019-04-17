@@ -68,17 +68,73 @@ firebase.auth().onAuthStateChanged(function (user) {
       snap.forEach(function (childSnapshot) {
         var userEmail = childSnapshot.child("email").val()
         if (userEmail === user.email) {
-          console.log(childSnapshot.child("symptomsIds").val())
-          console.log(childSnapshot.child("gender").val())
-          console.log(childSnapshot.child("birthYear").val())
-          
+          var userSymptoms = (childSnapshot.child("symptomsIds").val())
+          var userGender = (childSnapshot.child("gender").val())
+          var userBirthYear = (childSnapshot.child("birthYear").val())
+
+
+          var row = $("<tr>");
+
+          row.append("<td>" + userGender + "</td>");
+          row.append("<td>").text(userBirthYear);
+          var symptomsCol = $("<td>");
+
+          var symCol = $('<div>')
+
+          // const specialisations = response[i].Specialisation;
+          // for (var j = 0; j < specialisations.length; j++) {
+          //   const specialisationName = specialisations[j].Name;
+          //   var specializationBtn = new $('<button>', {
+          //     class: "btn btn-light specializationBtn",
+          //     'data-specialisation': specialisationName,
+          //     text: specialisationName,
+          //     click: function () {
+          //       //CALL find doctors method 
+          //       geoFindMe(specialisationName);
+          //       currentPractice = specialisationName;
+
+          //     }
+          //   });
+
+          for(var i = 0; i < userSymptoms.length; i++){
+            symCol.append(userSymptoms[i])
+          }
+
+          symptomsCol.append(symCol);
+          row.append(symptomsCol);
+
+          // $("#searchList").append("<tr><td>"+userGender+"</td><td>"+userBirthYear+"</td><td>"+userSymptoms+"</td></tr>");
+
+          $("#searchList").append(row);
+
+          //   $("#searchdisplay").append("<div class='modal fade' id='exampleModalLong' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>" + "<div class='modal-dialog' role='document'>" +
+          //     "<div class='modal-content'>" +
+          //     "<div class='modal-header'>" +
+          //     "<h5 class='modal-title' id='exampleModalLongTitle'>" + "Modal title" + "</h5>" +
+          //     "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
+          //     "<span aria-hidden='true'>" + "&times;" + "</span>" +
+          //         "</button >" +
+          //       "</div >" +
+          //     "<div class='modal-body'>"
+          //       + modal body +
+          //       "</div>" +
+          //     "<div class='modal-footer'>" +
+          //       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          //       <button type="button" class="btn btn-primary">Save changes</button>
+          //     </div>
+          //     </div >
+          //   </div >
+          // </div > ")
+
         }
+
+
 
       })
     })
   }
 
-pastSearches();
+  pastSearches();
 
 });
 

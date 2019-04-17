@@ -55,39 +55,68 @@
 
 
   <div class="jumbotron">
-    <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
+    <div class="row">
+      <div class="col-6">
+        <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
 
-    <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
-    </select>
-    <hr class="my-4">
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-2">
+        <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
+        </select>
+        <hr class="my-4">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-2">
 
-          <label for="genderRadio">Patient's Gender:</label> <br>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineGenderOptions" id="maleGender" value="male">
-            <label class="form-check-label" for="maleGender">Male</label>
+              <label for="genderRadio">Patient's Gender:</label> <br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineGenderOptions" id="maleGender" value="male">
+                <label class="form-check-label" for="maleGender">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineGenderOptions" id="femaleGender"
+                  value="female">
+                <label class="form-check-label" for="femaleGender">Female</label>
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+
+              <label for="inputAge">Patient's Year of Birth</label>
+              <select id="inputYearOfBirth" class="form-control">
+                <option selected>Choose...</option>
+              </select>
+
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineGenderOptions" id="femaleGender" value="female">
-            <label class="form-check-label" for="femaleGender">Female</label>
-          </div>
-        </div>
 
-        <div class="form-group col-md-2">
+          <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
 
-          <label for="inputAge">Patient's Year of Birth</label>
-          <select id="inputYearOfBirth" class="form-control">
-            <option selected>Choose...</option>
-          </select>
-
-        </div>
+        </form>
       </div>
 
-      <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
+      <div class="col-6">
+          <div class="card searchCard">
+              <div class="card-header">
+                Search History
+              </div>
+              <table class="table" id="searchTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Birth Year</th>
+                    <th scope="col">Symptoms</th>
+                    <th scope="col"><button type="button" class="btn btn-primary">Search</button></th>
+                  </tr>
+                </thead>
+                <tbody id="searchList">
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-    </form>
+      </div>
+
+    </div>
+
 
   </div>
 
@@ -131,69 +160,66 @@
         </div>
       </div>
       <div class="card" id="location-status">
-          <div class="card-header">
-            Sharing location Status
-          </div>
-          <div class="card-body">
-
-            <p id="status"></p>
-            <a id="map-link" target="_blank"></a>
-
-          </div>
-        </div>
-    </div>
-  </div>
-<<<<<<< HEAD
-</div>
-    </br>
-    <div class="col-md-6 offset-md-6">
-
-      <div class="card doctorsCard">
         <div class="card-header">
-          Doctors
+          Sharing location Status
         </div>
-        <table class="table" id="doctorsTable">
-          <thead>
-            <tr>
-              <th scope="col">Medical Facility</th>
-              <th scope="col">Distance (miles)</th>
-              <th scope="col">Address</th>
-            </tr>
-          </thead>
-          <tbody id="doctorsList">
-          </tbody>
-        </table>
+        <div class="card-body">
+
+          <p id="status"></p>
+          <a id="map-link" target="_blank"></a>
+
+        </div>
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-  <script src="assets/javascript/hmac-md5.js"></script>
-  <script src="assets/javascript/enc-base64-min.js"></script>
+  <<<<<<< HEAD </div> </br> <div class="col-md-6 offset-md-6">
 
-  <script src="assets/javascript/loggedin.js"></script>
-  <script src="assets/javascript/diagnosis.js"></script>
-    <script src="assets/javascript/app.js"></script>
-   <script src="assets/javascript/retrieve_doctors.js"></script>
-   <script src="assets/javascript/storesearch.js"></script>
+    <div class="card doctorsCard">
+      <div class="card-header">
+        Doctors
+      </div>
+      <table class="table" id="doctorsTable">
+        <thead>
+          <tr>
+            <th scope="col">Medical Facility</th>
+            <th scope="col">Distance (miles)</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+        <tbody id="doctorsList">
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+    <<<<<<< HEAD <script src="assets/javascript/hmac-md5.js">
+      </script>
+      <script src="assets/javascript/enc-base64-min.js"></script>
 
-  
-=======
->>>>>>> 5dc5b1c6f95333273c6af10e8c34c7c37bb9b4f2
-  </div>
-<script src="assets/javascript/hmac-md5.js"></script>
-<script src="assets/javascript/enc-base64-min.js"></script>
-<script src="assets/javascript/loggedin.js"></script>
-<script src="assets/javascript/diagnosis.js"></script>
-<script src="assets/javascript/app.js"></script>
-<script src="assets/javascript/retrieve_doctors.js"></script>
-=======
-  <script src="assets/javascript/hmac-md5.js"></script>
-  <script src="assets/javascript/enc-base64-min.js"></script>
-  <script src="assets/javascript/loggedin.js"></script>
-  <script src="assets/javascript/diagnosis.js"></script>
-  <script src="assets/javascript/app.js"></script>
-  <script src="assets/javascript/retrieve_doctors.js"></script>
->>>>>>> f4d437fcc3b17a4b220ba5115976533d12b50d79
+      <script src="assets/javascript/loggedin.js"></script>
+      <script src="assets/javascript/diagnosis.js"></script>
+      <script src="assets/javascript/app.js"></script>
+      <script src="assets/javascript/retrieve_doctors.js"></script>
+      <script src="assets/javascript/storesearch.js"></script>
+
+
+      =======
+      >>>>>>> 5dc5b1c6f95333273c6af10e8c34c7c37bb9b4f2
+      </div>
+      <script src="assets/javascript/hmac-md5.js"></script>
+      <script src="assets/javascript/enc-base64-min.js"></script>
+      <script src="assets/javascript/loggedin.js"></script>
+      <script src="assets/javascript/diagnosis.js"></script>
+      <script src="assets/javascript/app.js"></script>
+      <script src="assets/javascript/retrieve_doctors.js"></script>
+      =======
+      <script src="assets/javascript/hmac-md5.js"></script>
+      <script src="assets/javascript/enc-base64-min.js"></script>
+      <script src="assets/javascript/loggedin.js"></script>
+      <script src="assets/javascript/diagnosis.js"></script>
+      <script src="assets/javascript/app.js"></script>
+      <script src="assets/javascript/retrieve_doctors.js"></script>
+      >>>>>>> f4d437fcc3b17a4b220ba5115976533d12b50d79
 </body>
 
 </html>
