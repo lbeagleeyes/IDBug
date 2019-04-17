@@ -54,12 +54,12 @@ function getDiagnosis(symptomIdList, gender, birthYear) {
 function showDiagnosis(response) {
   console.log(response);
 
-  // $(".diagnosisCard").empty();
+  $(".diagnosisList").children().empty();
   $(".diagnosisCard").show();
 
   if (response.length < 1) {
 
-    $("#status").text("No diagnosis found. Please enter more symptoms and try again.");
+    $("#searchStatus").text("No diagnosis found. Please enter more symptoms and try again.");
     return;
 
   }
@@ -104,22 +104,24 @@ function showDiagnosis(response) {
   }
 }
 
-function searchDiagnosis() {
+function searchDiagnosis(symptomsIds = [], gender = "", birthYear = "") {
 
-  var symptomsIds = $("#symptomsSelect").val();
-  console.log(symptomsIds);
-  var gender = $('input[name="inlineGenderOptions"]:checked').val();
-  console.log(gender);
+  if (symptomsIds.length < 1 && gender == "" && birthYear == "") {
 
-  var birthYear = $("#inputYearOfBirth").val();
-  console.log(birthYear);
+    symptomsIds = $("#symptomsSelect").val();
+    console.log(symptomsIds);
+
+    gender = $('input[name="inlineGenderOptions"]:checked').val();
+    console.log(gender);
+
+    birthYear = $("#inputYearOfBirth").val();
+    console.log(birthYear);
+
+    saveSearch();
+  }
 
   getDiagnosis(symptomsIds, gender, birthYear);
-
-  saveSearch();
 }
-
-
 
 function clearSearch() {
 
@@ -143,6 +145,8 @@ $(document).ready(function () {
   fillSymptoms("#symptomsSelect");
 
   fillYears("#inputYearOfBirth");
+
+  showPastSearches();
 
 });
 
