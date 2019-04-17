@@ -83,14 +83,22 @@ function createHistoryRows(childSnapshot) {
     var row = $("<tr>");
     //row.append("<td>" + date + "</td>");
 
-    row.append("<td>" + userGender + "</td>");
-    row.append("<td>").text(userBirthYear);
+    var yearTd = new $("<td>", {
+      text:userBirthYear 
+    });
+    row.append(yearTd);
+
+    var genderTd = new $("<td>", {
+      text: userGender
+    });
+    row.append(genderTd);
+
     var symptomsCol = $("<td>");
 
     var symCol = $('<div>')
 
     for (var i = 0; i < userSymptoms.length; i++) {
-      symCol.append(userSymptoms[i])
+      symCol.append(userSymptoms[i]);
     }
 
     var searchBtn = new $('<button>', {
