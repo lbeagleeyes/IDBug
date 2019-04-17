@@ -8,11 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<<<<<<< HEAD
   <link rel="stylesheet" type="text/css" href="assets/css/app.css">
-=======
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
->>>>>>> origin/master
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Khand|Pragati+Narrow" rel="stylesheet">
   <script src="assets/javascript/hmac-md5.js"></script>
@@ -45,9 +41,9 @@
   <!-- Nav Bar-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Search History</a>
+      <div class="navbar-nav" id="navText">
+        <a class="nav-item nav-link active" href="#" id="homeText">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#" id="searchText">Search History</a>
       </div>
     </div>
     <ul class="nav justify-content-end">
@@ -59,7 +55,8 @@
 
 
   <div class="jumbotron">
-    <h1 class="display-4">IDBug - Enter your symptoms to get help</h1>
+    <h1 class="display-4">IDBug</h1>
+    <h2 class="display-4" id='enterSymptoms'>Enter your symptoms here</h2>
 
     <select class="selectpicker" multiple data-live-search="true" title="Select Symptoms..." id="symptomsSelect">
     </select>
@@ -88,10 +85,6 @@
 
         </div>
       </div>
-<<<<<<< HEAD
-
-      <a class="btn btn-primary btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
-=======
       <div class="form-row">
         <div class="form-group col-md-2">
           <a class="btn btn-light btn-lg" id="searchBtn" onclick="searchDiagnosis()" role="button">Search</a>
@@ -101,7 +94,6 @@
           <a class="btn btn-light btn-lg" id="clearBtn" onclick="clearSearch()" role="button">Clear</a>
         </div>
       </div>
->>>>>>> origin/master
 
     </form>
 
@@ -112,7 +104,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="card diagnosisCard">
-          <div class="card-header">
+          <div class="card-header" id="diagnosis">
             Diagnosis
           </div>
           <table class="table" id="diagnosisTable">
@@ -131,7 +123,7 @@
 
       <div class="col-md-6 ">
         <div class="card doctorsCard">
-          <div class="card-header">
+          <div class="card-header" id="doctors">
             Doctors
           </div>
           <table class="table" id="doctorsTable">
@@ -145,21 +137,6 @@
             <tbody id="doctorsList">
             </tbody>
           </table>
-<<<<<<< HEAD
-        </div>
-      </div>
-      <div class="card" id="location-status">
-          <div class="card-header">
-            Sharing location Status
-          </div>
-          <div class="card-body">
-
-            <p id="status"></p>
-            <a id="map-link" target="_blank"></a>
-
-          </div>
-        </div>
-=======
         </div>
       </div>
       <div class="card" id="location-status">
@@ -173,7 +150,6 @@
 
         </div>
       </div>
->>>>>>> origin/master
     </div>
   </div>
   <script src="assets/javascript/hmac-md5.js"></script>

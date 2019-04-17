@@ -1,21 +1,22 @@
-*{
-    background-color:rgb(35, 35, 35);
+* {
+    background-color: rgb(35, 35, 35);
     color: rgb(161, 209, 89);
     font-family: 'Khand', sans-serif;
 }
+
 #signin {
     margin: 10px;
     display: auto;
 }
 
- #mainText {
+#mainText {
     font-family: 'Khand', sans-serif;
     font-size: 90px;
-        }
+}
 
 #indexLogo {
     width: 100%;
-    text-align:center;
+    text-align: center;
 }
 
 .nav {
@@ -23,17 +24,29 @@
     margin: 0 auto;
 }
 
-
 .btn-primary {
-    background-color:rgb(161, 209, 89) !important;
+    background-color: rgb(161, 209, 89) !important;
     border-color: rgb(161, 209, 89) !important;
     color: rgb(55, 56, 55) !important;
     text-align: center;
 }
 
-.modal-content {    
+.modal-content {
     border-color: black !important;
 }
+
 #bugLogo {
     margin-left: 10px;
+}
+
+.navbar-nav {
+    color: white !important;
+}
+
+#signin:active {
+    transform: translateY(4px);
+}
+
+#signin:hover {
+    background-color: white !important;
 }
