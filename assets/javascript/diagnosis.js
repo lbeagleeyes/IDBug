@@ -54,17 +54,17 @@ function getDiagnosis(symptomIdList, gender, birthYear) {
 function showDiagnosis(response) {
   console.log(response);
 
- // $(".diagnosisCard").empty();
+  $(".diagnosisList").empty();
   $(".diagnosisCard").show();
 
   if (response.length < 1) {
 
-    $("#status").text("No diagnosis found. Please enter more symptoms and try again.");
+    $("#searchStatus").text("No diagnosis found. Please enter more symptoms and try again.");
     return;
 
   }
 
-  
+
   for (var i = 0; i < response.length; i++) {
     var issue = response[i].Issue;
 
@@ -91,7 +91,7 @@ function showDiagnosis(response) {
           //CALL find doctors method 
           geoFindMe(specialisationName);
           currentPractice = specialisationName;
-          
+
         }
       });
       btnGroup.append(specializationBtn);
@@ -104,28 +104,34 @@ function showDiagnosis(response) {
   }
 }
 
-function searchDiagnosis() {
+function searchDiagnosis(symptomsIds = [], gender = "", birthYear = "") {
 
-  var symptomsIds = $("#symptomsSelect").val();
-  console.log(symptomsIds);
-  var gender =  $('input[name="inlineGenderOptions"]:checked').val();
-  console.log(gender);
+  if (symptomsIds.length < 1 && gender == "" && birthYear == "") {
 
-  var birthYear = $("#inputYearOfBirth").val();
-  console.log(birthYear);
+    symptomsIds = $("#symptomsSelect").val();
+    console.log(symptomsIds);
 
-  getDiagnosis(symptomsIds,gender, birthYear );
+    gender = $('input[name="inlineGenderOptions"]:checked').val();
+    console.log(gender);
 
-  saveSearch();
+    birthYear = $("#inputYearOfBirth").val();
+    console.log(birthYear);
+
+  
+
+    saveSearch();
+  }
+
+  getDiagnosis(symptomsIds, gender, birthYear);
 }
 
-function clearSearch(){
+function clearSearch() {
 
   $("#symptomsSelect").val("");
   $('.selectpicker').selectpicker('refresh');
 
-  $('#maleGender').prop('checked',false);
-  $('#femaleGender').prop('checked',false);
+  $('#maleGender').prop('checked', false);
+  $('#femaleGender').prop('checked', false);
   $("#inputYearOfBirth").val("");
 
   $("#diagnosisList").empty();
@@ -142,11 +148,13 @@ $(document).ready(function () {
 
   fillYears("#inputYearOfBirth");
 
+  showPastSearches();
+
 });
 
-function fillYears(selectId){
+function fillYears(selectId) {
   currentYear = moment().year();
-  for(var i=currentYear; i>currentYear-100; i--) {
+  for (var i = currentYear; i > currentYear - 100; i--) {
     var yearOption = new $('<option>', {
       value: i,
       text: i
@@ -166,7 +174,7 @@ function fillSymptoms(selectId) {
 
       // console.log(symptom.id);
       // console.log(symptom.name);
-      
+
       var symptomOption = new $('<option>', {
         value: symptom.id,
         text: symptom.name

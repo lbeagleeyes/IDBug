@@ -1,4 +1,7 @@
 
+var email;
+var database = firebase.database();
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
@@ -15,12 +18,9 @@ firebase.auth().onAuthStateChanged(function (user) {
     window.location.replace('index.html');
   }
 
-
-  var database = firebase.database();
-
   // console.log(database)
 
-  var email = user.email;
+  email = user.email;
   // console.log(email);
 
   // variable user to keep track of connected users
@@ -37,94 +37,93 @@ firebase.auth().onAuthStateChanged(function (user) {
       con.onDisconnect().remove();
     }
   });
-
-  $(document).on("click", "#searchBtn", saveSearch)
-
-  function saveSearch() {
-    var symptomsIds = $("#symptomsSelect").val();
-    var gender = $('input[name="inlineGenderOptions"]:checked').val();
-    var birthYear = $("#inputYearOfBirth").val();
-
-    var names = [];
-    $('#symptomsSelect option:selected').each(function () { names.push($(this).text()); });
-    var symptomsNames = names.join(', ');
-    console.log(symptomsNames)
-
-    var userList = database.ref('/userDB/');
-    database.ref('/userDB/').push({
-      email: email,
-      // symptomsIds: symptomsIds,
-      symptomsNames: symptomsNames,
-      gender: gender,
-      birthYear: birthYear
-    })
-  }
-
-
-  // database.ref("/userDB").on("value", function (snap) {
-  //   snap.forEach(function (childSnapshot) {
-  //     var userList = childSnapshot.child("email").val()
-  //     console.log(userList);
-  //   })
-  // })
-
-  // Display user's past symptoms
-  function pastSearches() {
-    database.ref("/userDB").on("value", function (snap) {
-      snap.forEach(function (childSnapshot) {
-        var userEmail = childSnapshot.child("email").val()
-        if (userEmail === user.email) {
-          var userSymptoms = (childSnapshot.child("symptomsNames").val())
-          var userGender = (childSnapshot.child("gender").val())
-          var userBirthYear = (childSnapshot.child("birthYear").val())
-
-
-          var row = $("<tr>");
-
-          row.append("<td>" + userGender + "</td>");
-          row.append("<td>").text(userBirthYear);
-          var symptomsCol = $("<td>");
-
-          var symCol = $('<div>')
-
-          // const specialisations = response[i].Specialisation;
-          // for (var j = 0; j < specialisations.length; j++) {
-          //   const specialisationName = specialisations[j].Name;
-          //   var specializationBtn = new $('<button>', {
-          //     class: "btn btn-light specializationBtn",
-          //     'data-specialisation': specialisationName,
-          //     text: specialisationName,
-          //     click: function () {
-          //       //CALL find doctors method 
-          //       geoFindMe(specialisationName);
-          //       currentPractice = specialisationName;
-
-          //     }
-          //   });
-
-          for (var i = 0; i < userSymptoms.length; i++) {
-            symCol.append(userSymptoms[i])
-          }
-
-          symptomsCol.append(symCol);
-          row.append(symptomsCol);
-
-          $("#searchList").append("<tr><td>" + userGender + "</td><td>" + userBirthYear + "</td><td>" + userSymptoms + "</td>" + "<td><button type='button' id='oldsearchBtn' class='btn btn-primary'>Search</button></td></tr>");
-
-        }
-
-
-
-      })
-    })
-  }
-
-  pastSearches();
-
-  $(document).on("click", "#oldsearchBtn", getDiagnosis());
-
-
 });
+
+
+function saveSearch() {
+
+
+  var symptomsIds = $("#symptomsSelect").val();
+  var gender = $('input[name="inlineGenderOptions"]:checked').val();
+  var birthYear = $("#inputYearOfBirth").val();
+  var date = moment();
+
+  var names = [];
+  $('#symptomsSelect option:selected').each(function () { names.push($(this).text()); });
+  var symptomsNames = names.join(', ');
+  console.log(symptomsNames)
+
+  database.ref('/userDB').push({
+    //date: date,
+    email: email,
+    symptomsIds: symptomsIds,
+    symptomsNames: symptomsNames,
+    gender: gender,
+    birthYear: birthYear
+  })
+}
+
+
+
+database.ref("/userDB").on("child_added", function (snap) {
+  $("#searchList").children().empty();
+   createHistoryRows(snap);
+});
+
+// Display user's past symptoms
+function showPastSearches() {
+
+  database.ref("/userDB").on("value", function (snap) {
+    snap.forEach(function (childSnapshot) {
+
+      createHistoryRows(childSnapshot);
+    })
+  })
+}
+
+function createHistoryRows(childSnapshot) {
+
+
+  var userEmail = childSnapshot.child("email").val()
+  if (userEmail === email) {
+    var userSymptoms = (childSnapshot.child("symptomsNames").val());
+    var userGender = (childSnapshot.child("gender").val());
+    var userBirthYear = (childSnapshot.child("birthYear").val());
+    var symptomsIds = (childSnapshot.child("symptomsIds").val());
+    //var date = (childSnapshot.child("date").val());
+
+    var row = $("<tr>");
+    //row.append("<td>" + date + "</td>");
+
+    row.append("<td>" + userGender + "</td>");
+    row.append("<td>").text(userBirthYear);
+    var symptomsCol = $("<td>");
+
+    var symCol = $('<div>')
+
+    for (var i = 0; i < userSymptoms.length; i++) {
+      symCol.append(userSymptoms[i])
+    }
+
+    var searchBtn = new $('<button>', {
+      class: "btn btn-light searchBtn",
+      text: "Search",
+      click: function () {
+        searchDiagnosis(symptomsIds, userGender, userBirthYear);
+      }
+    });
+
+    symptomsCol.append(symCol);
+    row.append(symptomsCol);
+    row.append(searchBtn);
+
+    $("#searchList").append(row);
+  }
+}
+
+
+
+    //$(document).on("click", "#oldsearchBtn", getDiagnosis());
 
 
 
