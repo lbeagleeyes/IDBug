@@ -21,10 +21,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     // var providerData = user.providerData;
     console.log(user.email);
     // ...
- } else {
-   window.location.replace('index.html');
-  }
-});
+ //} else {
+ //  window.location.replace('index.html');
+  //}
+//});
 
 
 // Logout function

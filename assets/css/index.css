@@ -11,7 +11,7 @@
 
 #mainText {
     font-family: 'Khand', sans-serif;
-    font-size: 90px;
+    font-size: 128px;
 }
 
 #indexLogo {
@@ -19,10 +19,6 @@
     text-align: center;
 }
 
-.nav {
-    width: 12%;
-    margin: 0 auto;
-}
 
 .btn-primary {
     background-color: rgb(161, 209, 89) !important;
@@ -49,4 +45,9 @@
 
 #signin:hover {
     background-color: white !important;
+}
+#access {
+    width: 100%;
+    padding-right: 44.5%;
+    margin: 0 auto;
 }
