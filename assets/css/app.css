@@ -67,6 +67,27 @@
 #header2 {
   font-size: 16px;
   font-family: 'Pragati Narrow', sans-serif;
+<<<<<<< HEAD
+}
+
+.searchBar {
+  width: 40%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#patientInfo {
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#header2 {
+  text-align: center;
+}
+
+#inputYearOfBirth {
+=======
   text-align: center;
   
   }
@@ -85,6 +106,7 @@
 
   
   #inputYearOfBirth {
+>>>>>>> origin/master
   margin-top: 20px;
 }
 
