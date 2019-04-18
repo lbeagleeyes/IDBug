@@ -1,16 +1,19 @@
-*{
-  background-color:rgb(35, 35, 35)!important;
+* {
+  background-color: rgb(35, 35, 35)!important;
   color: rgb(161, 209, 89) !important;
   border-color: white !important;
 }
+
 .bg-light {
-  background-color:rgb(35, 35, 35) !important;
+  background-color: rgb(35, 35, 35) !important;
 }
+
 .jumbotron {
-  background-color:rgb(35, 35, 35);
+  background-color: rgb(35, 35, 35);
 }
+
 .btn-light {
-  background-color:rgb(35, 35, 35);
+  background-color: rgb(35, 35, 35);
   border-color: rgb(161, 209, 89);
 }
 
@@ -19,12 +22,10 @@
   text-align: center;
 }
 
-
 .form-control {
   width: 75%;
   /* text-align: center; */
 }
-
 
 #signin {
   margin: 10px;
@@ -59,13 +60,12 @@
   text-align: center;
   font-size: 64px;
   font-family: 'Khand', sans-serif;
-  
-  }
-  
-  #header2{
+}
+
+#header2 {
   font-size: 16px;
   font-family: 'Pragati Narrow', sans-serif;
-<<<<<<< HEAD
+  text-align: center;
 }
 
 .searchBar {
@@ -80,47 +80,38 @@
   text-align: center;
 }
 
-#header2 {
-  text-align: center;
+#inputYearOfBirth {
+  margin-top: 20px;
 }
 
-#inputYearOfBirth {
-=======
-  text-align: center;
-  
-  }
-  
-  .searchBar {
-  width: 40%;
-  margin: 0 auto;
-  padding: 0;
-  }
-  
-  #patientInfo {
-    width: 25%;
-    margin: 0 auto;
-    text-align:center;
-  }
+#searchBtn:hover {
+  background-color: white !important;
+}
 
-  
-  #inputYearOfBirth {
->>>>>>> origin/master
-  margin-top: 20px;
-  
-  }
-  
-  #searchBtn {
-    margin-top: 16px; 
-  }
+#searchBtn:active {
+  transform: translateY(4px);
+}
 
-  #mainText {
-      font-family: 'Khand', sans-serif;
-      font-size: 64px;
-      }
+#clearBtn:hover {
+  background-color: white !important;
+}
+
+#clearBtn:active {
+  transform: translateY(4px);
+}
+
+#searchBtn {
+  margin-top: 16px;
+}
+
+#mainText {
+  font-family: 'Khand', sans-serif;
+  font-size: 64px;
+}
 
 #indexLogo {
-width: 100%;
-text-align:center;
+  width: 100%;
+  text-align: center;
 }
 
 .nav {
@@ -128,6 +119,46 @@ text-align:center;
 }
 
 #logOut {
-  text-align:right;
+ text-align: right;
 }
 
+#diagnosis {
+  text-align: center;
+}
+
+#doctors {
+  text-align: center;
+}
+
+#enterSymptoms {
+  font-size: 20px;
+  color: white !important;
+}
+
+#homeText:hover {
+  color: white !important;
+}
+
+#homeText:active {
+  transform: translateY(4px);
+}
+
+#searchText:hover {
+  color: white !important;
+}
+
+#searchText:active {
+  transform: translateY(4px);
+}
+
+#searchText {
+  margin-top: 8px;
+}
+
+#logout:hover {
+  background-color: white !important;
+}
+
+#logout:active {
+  transform: translateY(4px);
+}
