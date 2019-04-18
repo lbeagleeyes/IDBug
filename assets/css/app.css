@@ -163,3 +163,14 @@
 #logout:active {
   transform: translateY(4px);
 }
+#clearBtn {
+  display: fixed;
+  margin-top: 23px;
+}
+#logout{
+  margin: 0 auto;
+  
+}
+#searchScroll {
+  width: 100%;
+}
