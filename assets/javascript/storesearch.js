@@ -134,4 +134,9 @@ $(document).on("click", "#searchhistory", function (event) {
   }
 })
 
-
+$(document).on("click", "#homeText", function (event) {
+  if (showHistory === true) {
+    $(".searchCard").hide();
+    showHistory = false;
+  }
+})
