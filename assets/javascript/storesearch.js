@@ -123,7 +123,7 @@ $(".searchCard").hide();
 
 var showHistory = false;
 
-$(document).on("click", "#searchhistory", function (event) {
+$("#searchhistory").on("click",function (event) {
   if (showHistory === false) {
     $(".searchCard").show();
     showHistory = true
@@ -134,7 +134,7 @@ $(document).on("click", "#searchhistory", function (event) {
   }
 })
 
-$(document).on("click", "#homeText", function (event) {
+$("#homeText").on("click",function (event) {
   if (showHistory === true) {
     $(".searchCard").hide();
     showHistory = false;
