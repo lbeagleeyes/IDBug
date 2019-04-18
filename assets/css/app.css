@@ -2,6 +2,7 @@
   background-color: rgb(35, 35, 35)!important;
   color: rgb(161, 209, 89) !important;
   border-color: white !important;
+  font-family: 'Khand', sans-serif;
 }
 
 .bg-light {
@@ -136,22 +137,22 @@
 }
 
 #homeText:hover {
-  color: white !important;
+  color: white !important ;
 }
 
 #homeText:active {
   transform: translateY(4px);
 }
 
-#searchText:hover {
+#searchhistory:hover {
   color: white !important;
 }
 
-#searchText:active {
+#searchhistory:active {
   transform: translateY(4px);
 }
 
-#searchText {
+#searchhistory {
   margin-top: 8px;
 }
 
