@@ -7,7 +7,7 @@
 
 <p>Group Members: Andrew R, Laura B, Kevin L, Sewon P</p>
 
-<p> Access using: <a href src="https://lbeagleeyes.github.io/Project-1/"> https://lbeagleeyes.github.io/Project-1/ </a> </p>
+<p> Access using: <a href="https://lbeagleeyes.github.io/Project-1/"> https://lbeagleeyes.github.io/Project-1/ </a> </p>
 
 <p>Create a login and select your symptoms to get a diagnosis with the specialization of doctor you will need to see for each diagnosis. Choose your specialization and find doctors near your current location. Get directions by clicking on the doctor's address.  </p>
 
