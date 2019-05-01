@@ -1,28 +1,14 @@
-// Initialize Firebase
-// var config = {
-//   apiKey: "AIzaSyC2CVjUtfs2e7MwrZ0Lt4EEGVVMZA9MLEg",
-//   authDomain: "idbug-cb853.firebaseapp.com",
-//   databaseURL: "https://idbug-cb853.firebaseio.com",
-//   projectId: "idbug-cb853",
-//   storageBucket: "idbug-cb853.appspot.com",
-//   messagingSenderId: "345341406873"
-// };
-// firebase.initializeApp(config);
 
 var database = firebase.database();
 var currentPractice = ""
 var apiLoginURL = "https://sandbox-authservice.priaid.ch/login"; //sandbox
-//var apiLoginURL = "https://authservice.priaid.ch/login";      //real live data
-
 var apiURL = "https://sandbox-healthservice.priaid.ch"; //sandbox
-//var apiURL = "https://healthservice.priaid.ch";       //live data
+
 
 function getApiData(queryURL, callBack) {
   var api_key = "laurabermudezg@gmail.com"  //sandbox
-  //var api_key = "Qx6s7_GMAIL_COM_AUT";    //live
   var uri = apiLoginURL;
   var secret_key = "p2C3QtAr84HdZn9q6";     //sandbox
-  //var secret_key = "Nm7o6S3Lqt9AJb84X";   //live
   var computedHash = CryptoJS.HmacMD5(uri, secret_key);
   var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
 
